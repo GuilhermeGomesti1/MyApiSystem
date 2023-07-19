@@ -1,91 +1,69 @@
-import { useState } from "react";
+import { useState, FormEvent } from 'react';
+import { useRouter } from 'next/router';
+import Tasks from '../tasks';
 
-import connectToDataBase from "@/database/db";
+export default function Signup()  {
+  const router = useRouter();
 
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-export default function SignUp() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value);
-  };
-
-  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
-  };
-
-  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log("Name:", name);
-    console.log("Email:", email);
-    console.log("Password:", password);
 
-    try {
-      const client = await connectToDataBase();
-      console.log("Conexão com o banco de dados estabelecida");
-      await client.close();
-      console.log("Conexão com o banco de dados encerrada");
-      
-        const response = await fetch(process.env.MONGODB_URL!, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application.json",
-            },
-          body: JSON.stringify({ name, email, password }),
-        }
-      );
-      if (response.ok) {
-        const data = await response.json();
-        console.log("Cadastro  bem sucedido:", data);
-      } else {
-        console.error("Erro ao cadastrar");
-      }
-    } catch (error) {
-      console.log("Erro na chamada a API, error");
+    // Fazer uma chamada de API para criar o usuário usando os dados fornecidos
+    const response = await fetch('http://localhost:8000/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ firstName, lastName, email, password }),
+    });
+
+    if (response.ok) {
+      // Usuário criado com sucesso
+      console.log('Usuário criado com sucesso!');
+
+      router.push('/tasks');
+    } else {
+      // Erro ao criar usuário
+      console.log('Erro ao criar usuário');
     }
-
   };
+
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="name">Nome:</label>
+    <div>
+      <h1>Signup</h1>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
-          id="name"
-          value={name}
-          onChange={handleNameChange}
-          required
+          placeholder="First Name"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
         />
-      </div>
-
-      <div>
-        <label htmlFor="email">Email:</label>
+        <input
+          type="text"
+          placeholder="Last Name"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+        />
         <input
           type="email"
-          id="email"
+          placeholder="Email"
           value={email}
-          onChange={handleEmailChange}
-          required
+          onChange={(e) => setEmail(e.target.value)}
         />
-      </div>
-
-      <div>
-        <label htmlFor="password">Senha:</label>
         <input
           type="password"
-          id="password"
+          placeholder="Password"
           value={password}
-          onChange={handlePasswordChange}
-          required
+          onChange={(e) => setPassword(e.target.value)}
         />
-      </div>
-      <button type="submit">Cadastrar</button>
-    </form>
+        <button type="submit">Signup</button>
+      </form>
+    </div>
   );
-}
+};
+
