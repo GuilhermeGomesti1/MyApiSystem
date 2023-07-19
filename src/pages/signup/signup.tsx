@@ -1,6 +1,6 @@
 import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/router';
-import Tasks from '../tasks';
+
 
 export default function Signup()  {
   const router = useRouter();
@@ -66,4 +66,3 @@ export default function Signup()  {
     </div>
   );
 };
-

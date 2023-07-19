@@ -1,27 +1,41 @@
 import React, { useState } from "react";
-
-
-
-
+import { useRouter } from "next/router";
 
 export default function LoginForm() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter();
 
-    const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
-        setEmail(e.target.value);
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const response = await fetch("http://localhost:8000/signin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    if (response.ok) {
+      // Autenticação bem-sucedida
+      const data = await response.json();
+      const token = data.token;
+      console.log("usario logado com sucesso")
+      router.push("/tasks");
+    } else {
+      // Erro na autenticação
+      console.log("Erro na autenticação");
     }
-
-    const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
-        setPassword(e.target.value);
-    }
-
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) =>{
-        e.preventDefault();
-        console.log('Email:', email);
-        console.log('Password:', password);
-    }
-
+  };
   return (
     <form onSubmit={handleSubmit}>
       <div>
