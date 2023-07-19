@@ -1,9 +1,9 @@
 import Head from 'next/head'
 
-import styles from '@/styles/Home.module.css'
-import LoginForm from './signin/login'
-import SignUp from './signup/signup'
-
+import styles from '@/styles/Home.module.css';
+import LoginForm from './signin/login';
+import SignUp from './signup';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -14,10 +14,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
+      <h1>hello world</h1>
         <LoginForm/>
-        <SignUp/>
+        <Link href="/signup" passHref>
+  <button>Signup</button>
+</Link>
         <div>
-          <h1>hello world</h1>
+         
         </div>
       </main>
     </>
