@@ -28,9 +28,20 @@ export default function LoginForm() {
     if (response.ok) {
       // Autenticação bem-sucedida
       const data = await response.json();
+      console.log("Resposta da API:", data);
+      console.log(data);
+      
+      
       const token = data.token;
-      console.log("usario logado com sucesso")
-      router.push("/tasks");
+      console.log("Token obtido da API:", token);
+
+      localStorage.setItem("token", token);
+      console.log("Token armazenado no localStorage:", token);
+      
+      setTimeout(() => {
+        console.log("Usuário logado com sucesso");
+        router.push("/tasks");
+      }, 500);
     } else {
       // Erro na autenticação
       console.log("Erro na autenticação");

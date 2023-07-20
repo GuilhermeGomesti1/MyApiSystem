@@ -1,7 +1,9 @@
+import CreateTaskForm from "@/components/CreateTaskForm";
+
 export default function Tasks() {
     return(
         <div>
-            <h1>Tarefas</h1>
+            <CreateTaskForm/>
         </div>
     )
 }

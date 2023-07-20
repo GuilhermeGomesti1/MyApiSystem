@@ -1,7 +1,7 @@
 import Head from 'next/head'
 
 import styles from '@/styles/Home.module.css';
-import LoginForm from './signin/login';
+import LoginForm from './login';
 import SignUp from './signup';
 import Link from 'next/link';
 
