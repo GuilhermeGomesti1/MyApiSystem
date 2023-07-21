@@ -21,6 +21,7 @@ export default function LoginForm() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`, // Inclua o token de autorização no cabeçalho da requisição
       },
       body: JSON.stringify({ email, password }),
     });
@@ -37,7 +38,7 @@ export default function LoginForm() {
 
       localStorage.setItem("token", token);
       console.log("Token armazenado no localStorage:", token);
-      
+
       setTimeout(() => {
         console.log("Usuário logado com sucesso");
         router.push("/tasks");

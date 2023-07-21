@@ -1,13 +1,16 @@
-// CreateTaskForm.tsx
-import React, { useState } from "react";
-import jwt, { JwtPayload } from 'jsonwebtoken';
-import { useRouter } from "next/router";
+import { TokenPayload } from "your-shared-module";
 
+import React, { useState } from "react";
+import { useRouter } from "next/router";
+import jwt, { JwtPayload, Secret } from 'jsonwebtoken';
+import dotenv from "dotenv";
+
+dotenv.config();
 export default function CreateTaskForm() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const router = useRouter();
-  
+
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
   };
@@ -24,19 +27,43 @@ export default function CreateTaskForm() {
     };
     try {
       const token = localStorage.getItem("token");
+      if (!token) {
+        console.log("Token não encontrado. O usuário não está autenticado.");
+        return;
+      }
+      
+      console.log("Token encontrado:", token);
+      
+      // Verifica se o token não é null ou undefined
+      if (typeof token !== 'string') {
+        throw new Error('Token inválido');
+      }
 
-      const response = await fetch("http://localhost:8000/tasks", {
+      const decodedToken = jwt.verify(token, process.env.JWT_SECRET_KEY as Secret) as TokenPayload;
+      
+      if (!('userId' in decodedToken)) {
+        throw new Error('Invalid token: userId is missing');
+      }
+      
+      console.log("Decoded Token:", decodedToken);
+      const userId = decodedToken.userId;
+      console.log("UserID do usuário:", userId);
+      
+      const response = await fetch(`http://localhost:8000/users/${userId}/tasks`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`, // Inclui o token de autenticação nos cabeçalhos
+          Authorization: `Bearer ${token}`, 
         },
         body: JSON.stringify(taskData),
       });
 
+      console.log("Response:", response);
+
       if (response.ok) {
-        console.log("Tarefa criada com sucesso!");
-        // Faça algo para lidar com o resultado, como atualizar a lista de tarefas exibida na página
+        const data = await response.json();
+        console.log("Resposta da API:", data);
+        router.push("/tasks");
       } else {
         console.log("Erro ao criar a tarefa");
       }
