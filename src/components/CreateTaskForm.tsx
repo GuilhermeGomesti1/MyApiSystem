@@ -63,7 +63,8 @@ export default function CreateTaskForm() {
       if (response.ok) {
         const data = await response.json();
         console.log("Resposta da API:", data);
-        router.push("/tasks");
+        //router.push("/tasks"); oi
+        router.push(`/users/${userId}/tasks`);
       } else {
         console.log("Erro ao criar a tarefa");
       }
