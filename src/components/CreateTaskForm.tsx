@@ -3,9 +3,9 @@ import { TokenPayload } from "your-shared-module";
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import jwt, { JwtPayload, Secret } from 'jsonwebtoken';
-import dotenv from "dotenv";
 
-dotenv.config();
+
+
 export default function CreateTaskForm() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -33,22 +33,18 @@ export default function CreateTaskForm() {
       }
       
       console.log("Token encontrado:", token);
-      
-      // Verifica se o token não é null ou undefined
-      if (typeof token !== 'string') {
-        throw new Error('Token inválido');
-      }
 
-      const decodedToken = jwt.verify(token, process.env.JWT_SECRET_KEY as Secret) as TokenPayload;
-      
-      if (!('userId' in decodedToken)) {
-        throw new Error('Invalid token: userId is missing');
+      // Decodifica o token para obter os dados contidos nele
+      const decodedToken = jwt.decode(token) as TokenPayload;
+      if (!decodedToken || !('userId' in decodedToken)) {
+        console.log("Decoded Token:", decodedToken);
+        throw new Error('Token inválido ou sem userId');
       }
       
       console.log("Decoded Token:", decodedToken);
       const userId = decodedToken.userId;
       console.log("UserID do usuário:", userId);
-      
+      console.log("URL da API:", `http://localhost:8000/users/${userId}/tasks`);
       const response = await fetch(`http://localhost:8000/users/${userId}/tasks`, {
         method: "POST",
         headers: {
