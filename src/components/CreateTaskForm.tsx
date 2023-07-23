@@ -1,10 +1,8 @@
-import { TokenPayload } from "your-shared-module";
+import { TokenPayload } from "@/your-shared-module";
 
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import jwt, { JwtPayload, Secret } from 'jsonwebtoken';
-
-
+import jwt, { JwtPayload, Secret } from "jsonwebtoken";
 
 export default function CreateTaskForm() {
   const [title, setTitle] = useState("");
@@ -15,7 +13,9 @@ export default function CreateTaskForm() {
     setTitle(event.target.value);
   };
 
-  const handleDescriptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleDescriptionChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setDescription(event.target.value);
   };
 
@@ -27,32 +27,39 @@ export default function CreateTaskForm() {
     };
     try {
       const token = localStorage.getItem("token");
+      console.log(
+        "Token salvo no localStorage:",
+        localStorage.getItem("token")
+      );
       if (!token) {
         console.log("Token não encontrado. O usuário não está autenticado.");
         return;
       }
-      
+
       console.log("Token encontrado:", token);
 
       // Decodifica o token para obter os dados contidos nele
       const decodedToken = jwt.decode(token) as TokenPayload;
-      if (!decodedToken || !('userId' in decodedToken)) {
+      if (!decodedToken || !("userId" in decodedToken)) {
         console.log("Decoded Token:", decodedToken);
-        throw new Error('Token inválido ou sem userId');
+        throw new Error("Token inválido ou sem userId");
       }
-      
+
       console.log("Decoded Token:", decodedToken);
       const userId = decodedToken.userId;
       console.log("UserID do usuário:", userId);
-      console.log("URL da API:", `http://localhost:8000/users/${userId}/tasks`);
-      const response = await fetch(`http://localhost:8000/users/${userId}/tasks`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`, 
-        },
-        body: JSON.stringify(taskData),
-      });
+      console.log("URL da API:",  `http://localhost:8000/${userId}/tasks`,);
+      const response = await fetch(
+        `http://localhost:8000/${userId}/tasks`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(taskData),
+        }
+      );
 
       console.log("Response:", response);
 
