@@ -1,8 +1,7 @@
 import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/router';
 
-
-export default function Signup()  {
+export default function Signup() {
   const router = useRouter();
 
   const [firstName, setFirstName] = useState('');
@@ -25,6 +24,27 @@ export default function Signup()  {
     if (response.ok) {
       // Usuário criado com sucesso
       console.log('Usuário criado com sucesso!');
+
+      // Obter o ID do usuário recém-criado da resposta da API
+      const newUser = await response.json();
+      const userId = newUser.id;
+
+      // Criar a tarefa para o usuário recém-criado
+      const taskResponse = await fetch(`http://localhost:8000/${userId}/tasks`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ title: 'Task Title', description: 'Task Description' }),
+      });
+
+      if (taskResponse.ok) {
+        // Tarefa criada com sucesso
+        console.log('Tarefa criada com sucesso!');
+      } else {
+        // Erro ao criar tarefa
+        console.log('Erro ao criar tarefa');
+      }
 
       router.push('/tasks');
     } else {
@@ -65,4 +85,4 @@ export default function Signup()  {
       </form>
     </div>
   );
-};
+}

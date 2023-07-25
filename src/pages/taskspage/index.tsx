@@ -1,54 +1,43 @@
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import { Task } from "@/types";
-const TasksPage = () => {
-  const router = useRouter();
+import React, { useEffect, useState } from "react";
+
+type Task = {
+  taskId: string;
+  title: string;
+  description: string;
+  completed: boolean;
+};
+
+const UserTasks = ({ userId }: { userId: string }) => {
   const [tasks, setTasks] = useState<Task[]>([]);
 
-
-  
   useEffect(() => {
-    const fetchTasks = async () => {
+    // Função para buscar as tarefas do usuário a partir do backend
+    const fetchUserTasks = async () => {
       try {
-        const token = localStorage.getItem("token");
-        console.log("token salvo no localstorage:", token);
-        if (!token) {
-          console.log("token nao encontrado!");
-          router.push("/login"); //redirecionar o usuario para pagina de login se ele nao tiver sido autenticado
-          return;
-        }
-
-        const response = await fetch("http://localhost:8000/tasks", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
+        const response = await fetch(`http://localhost:8000/${userId}/tasks`);
         if (response.ok) {
-          const data = await response.json();
-          console.log("Resposta da api:", data);
-          setTasks(data); //atualizar o estado das tasks com os dados obtidos da api
+          const tasksData = await response.json();
+          setTasks(tasksData);
         } else {
-          console.log("Erro ao obter tarefas");
+          console.error("Erro ao buscar tarefas do usuário");
         }
       } catch (error) {
-        console.log("Erro na solicitaçao de obtenção de tarefas:", error);
+        console.error("Erro ao buscar tarefas do usuário", error);
       }
     };
 
-    fetchTasks();
-  }, []);
+    fetchUserTasks();
+  }, [userId]);
 
   return (
     <div>
-      <h1>Tasks Page</h1>
+      <h1>Minhas Tarefas</h1>
       <ul>
         {tasks.map((task) => (
-          <li key={task.userId}>
-            <p>Title: {task.title}</p>
-            <p>Description: {task.description}</p>
+          <li key={task.taskId}>
+            <h3>{task.title}</h3>
+            <p>{task.description}</p>
+            <p>Concluída: {task.completed ? "Sim" : "Não"}</p>
           </li>
         ))}
       </ul>
@@ -56,4 +45,4 @@ const TasksPage = () => {
   );
 };
 
-export default TasksPage;
+export default UserTasks;

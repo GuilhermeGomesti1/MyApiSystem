@@ -1,4 +1,4 @@
-export const secretKey = "sua-chave-secreta-aqui";
+
 
 export interface TokenPayload {
   userId: string;

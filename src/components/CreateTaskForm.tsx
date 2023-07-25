@@ -1,12 +1,14 @@
-import { TokenPayload } from "@/your-shared-module";
-
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import jwt, { JwtPayload, Secret } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
+
+type Description = string;
+type Title = string;
 
 export default function CreateTaskForm() {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const [title, setTitle] = useState<Title>("");
+  const [description, setDescription] = useState<Description>("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,62 +23,39 @@ export default function CreateTaskForm() {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const taskData = {
-      title,
-      description,
-    };
-    try {
-      const token = localStorage.getItem("token");
-      console.log(
-        "Token salvo no localStorage:",
-        localStorage.getItem("token")
-      );
-      if (!token) {
-        console.log("Token não encontrado. O usuário não está autenticado.");
-        return;
-      }
+    const token = localStorage.getItem("token");
+    const userId = localStorage.getItem("userId");
 
-      console.log("Token encontrado:", token);
-
-      // Decodifica o token para obter os dados contidos nele
-      const decodedToken = jwt.decode(token) as TokenPayload;
-      if (!decodedToken || !("userId" in decodedToken)) {
-        console.log("Decoded Token:", decodedToken);
-        throw new Error("Token inválido ou sem userId");
-      }
-
-      console.log("Decoded Token:", decodedToken);
-      const userId = decodedToken.userId;
-      console.log("UserID do usuário:", userId);
-      console.log("URL da API:",  `http://localhost:8000/${userId}/tasks`,);
-      const response = await fetch(
-        `http://localhost:8000/${userId}/tasks`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(taskData),
-        }
-      );
-
-      console.log("Response:", response);
-
-      if (response.ok) {
-        const data = await response.json();
-        console.log("Resposta da API:", data);
-        //router.push("/tasks"); oi
-        router.push(`/users/${userId}/tasks`);
-      } else {
-        console.log("Erro ao criar a tarefa");
-      }
-    } catch (error) {
-      console.log("Erro na solicitação de criação de tarefa:", error);
+    if (!token || !userId) {
+      alert("Usuário não autenticado. Faça o login primeiro.");
+      return;
     }
 
-    setTitle("");
-    setDescription("");
+    try {
+      const response = await fetch(`http://localhost:8000/${userId}/tasks`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+          'sec-fetch-dest': 'task',
+        },
+        body: JSON.stringify({ title, description }),
+      });
+
+      if (response.ok) {
+        console.log("Tarefa criada com sucesso!");
+        router.push("/tasks");
+      } else {
+        throw new Error("Erro ao criar tarefa");
+      }
+    } catch (err) {
+      console.error("Erro ao criar tarefa:", err);
+      alert("Erro ao criar tarefa. Verifique o console para mais detalhes.");
+    } finally {
+      setIsSubmitting(false);
+      setTitle("");
+      setDescription("");
+    }
   };
 
   return (
