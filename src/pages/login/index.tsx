@@ -28,9 +28,9 @@ export default function LoginForm() {
 
       if (response.ok) {
         const data = await response.json();
-        const { token, userId, _id} = data;
+        const { token, userId} = data;
 
-        const userIdValue = userId || _id;
+        const userIdValue =  userId;
 
         if (!userIdValue) {
           throw new Error("UserId not present in the response after login.");
@@ -39,7 +39,7 @@ export default function LoginForm() {
         localStorage.setItem("token", token); // Armazena o token no LocalStorage
         localStorage.setItem("userId", userIdValue);
         console.log("Token armazenado no localStorage:", token);  // Armazena o ID do usuário no LocalStorage
-        console.log("userId após o login:", userIdValue);
+        console.log("userId após o login:", userIdValue); //essa id nao é a mesma que faz a verificação no backend
         router.push("/tasks"); // Redireciona para a página de tarefas após o login bem-sucedido
       } else {
         throw new Error("Erro ao fazer login");

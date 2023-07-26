@@ -37,7 +37,7 @@ export default function CreateTaskForm() {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
-          'sec-fetch-dest': 'task',
+          "sec-fetch-dest": "task",
         },
         body: JSON.stringify({ title, description }),
       });
