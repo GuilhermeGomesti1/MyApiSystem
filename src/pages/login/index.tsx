@@ -22,16 +22,15 @@ export default function LoginForm() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          
         },
         body: JSON.stringify({ email, password }),
       });
-      const responseData = await response.json();
-      console.log("Resposta do Backend:", responseData); 
-
       if (response.ok) {
-        const data = await responseData;
-
-        const { token, id } = data;
+        const responseData = await response.json(); // Aguardar a resposta antes de acessar o responseData
+        console.log("Resposta do Backend:", responseData);
+  
+        const { token, id } = responseData;
 
         const userIdValue =  id;
 

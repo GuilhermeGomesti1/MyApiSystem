@@ -39,10 +39,13 @@ export default function CreateTaskForm() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+         
+          
           Authorization: `Bearer ${token}`,
           
+          
         },
-        body: JSON.stringify({ title, description }),
+        body: JSON.stringify({ title, description, authorization: `Bearer ${token}`, }),
       });
       console.log("Headers da requisição:", response.headers);
       if (response.ok) {
