@@ -8,7 +8,7 @@ type Title = string;
 export default function CreateTaskForm() {
   const [title, setTitle] = useState<Title>("");
   const [description, setDescription] = useState<Description>("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  
   const router = useRouter();
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,7 +55,7 @@ export default function CreateTaskForm() {
       console.error("Erro ao criar tarefa:", err);
       alert("Erro ao criar tarefa. Verifique o console para mais detalhes.");
     } finally {
-      setIsSubmitting(false);
+      
       setTitle("");
       setDescription("");
     }
