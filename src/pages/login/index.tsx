@@ -25,12 +25,15 @@ export default function LoginForm() {
         },
         body: JSON.stringify({ email, password }),
       });
+      const responseData = await response.json();
+      console.log("Resposta do Backend:", responseData); 
 
       if (response.ok) {
-        const data = await response.json();
-        const { token, userId} = data;
+        const data = await responseData;
 
-        const userIdValue =  userId;
+        const { token, id } = data;
+
+        const userIdValue =  id;
 
         if (!userIdValue) {
           throw new Error("UserId not present in the response after login.");

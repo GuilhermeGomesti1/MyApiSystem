@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import jwt from "jsonwebtoken";
+
 
 type Description = string;
 type Title = string;
@@ -19,13 +19,16 @@ export default function CreateTaskForm() {
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     setDescription(event.target.value);
+    
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+    event.preventDefault();  console.log("Formulário enviado!");
     const token = localStorage.getItem("token");
-    const userId = localStorage.getItem("userId");
+    console.log("Token no frontend:", token); 
 
+    const userId = localStorage.getItem("userId");
+    console.log("UserID no frontend:", userId); 
     if (!token || !userId) {
       alert("Usuário não autenticado. Faça o login primeiro.");
       return;
@@ -37,11 +40,11 @@ export default function CreateTaskForm() {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
-          "sec-fetch-dest": "task",
+          
         },
         body: JSON.stringify({ title, description }),
       });
-
+      console.log("Headers da requisição:", response.headers);
       if (response.ok) {
         console.log("Tarefa criada com sucesso!");
         router.push("/tasks");
