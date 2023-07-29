@@ -1,0 +1,44 @@
+/* styles.module.css */
+
+/* Estilo do formulário */
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Estilo dos campos de input */
+  .signup-input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #1F72EB;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #1F72EB;
+  }
+  
+  .signup-input::placeholder {
+    color: #1F72EB;
+  }
+  
+  /* Estilo do botão de signup */
+  .signup-button {
+    padding: 10px;
+    background-color: #0A459E;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  /* Estilo do botão de signup quando hover */
+  .signup-button:hover {
+    background-color: #3B89FF;
+    transition: background-color 1s ease;
+  }
+  

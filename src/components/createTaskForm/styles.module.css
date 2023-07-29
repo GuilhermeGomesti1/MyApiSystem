@@ -1,0 +1,44 @@
+.formContainer {
+    width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+
+  /* Centralizar vertical e horizontalmente */
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+  
+  /* Estilo para os rótulos */
+  .formLabel {color: #ccc;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  /* Estilo para as entradas de texto */
+  .formInput {
+    color:white;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Estilo para o botão de enviar */
+  .formButton {
+    padding: 10px 20px;
+    background-color: #004988;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .formButton:hover {
+    background-color: #0056b3;
+  }

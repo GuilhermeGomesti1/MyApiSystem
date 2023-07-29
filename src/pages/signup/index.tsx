@@ -1,5 +1,6 @@
 import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/router';
+import styles from './styles.module.css';
 
 export default function Signup() {
   const router = useRouter();
@@ -55,34 +56,40 @@ export default function Signup() {
 
   return (
     <div>
-      <h1>Signup</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="First Name"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Last Name"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Signup</button>
-      </form>
-    </div>
-  );
+    <h1>Signup</h1>
+    <form className={styles['signup-form']} onSubmit={handleSubmit}>
+      <input
+        type="text"
+        placeholder="First Name"
+        value={firstName}
+        onChange={(e) => setFirstName(e.target.value)}
+        className={styles['signup-input']}
+      />
+      <input
+        type="text"
+        placeholder="Last Name"
+        value={lastName}
+        onChange={(e) => setLastName(e.target.value)}
+        className={styles['signup-input']}
+      />
+      <input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        className={styles['signup-input']}
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        className={styles['signup-input']}
+      />
+      <button type="submit" className={styles['signup-button']}>
+        Signup
+      </button>
+    </form>
+  </div>
+);
 }

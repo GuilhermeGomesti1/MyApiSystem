@@ -1,0 +1,44 @@
+/* styles.module.css */
+
+/* Estilo do formulário */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Estilo dos campos de input */
+  .login-input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #E7F6F9;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #004988;
+  }
+  
+  .login-input::placeholder {
+    color: #E7F6F9;
+  }
+  
+  /* Estilo do botão de login */
+  .login-button {
+    padding: 10px;
+    background-color: #026CB6;
+    color: #E7F6F9;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  /* Estilo do botão de login quando hover */
+  .login-button:hover {
+    background-color: #004E84;
+    transition: background-color 1s ease;
+  }
+  

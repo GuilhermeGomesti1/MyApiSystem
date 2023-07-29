@@ -1,3 +1,4 @@
+import styles from './styles.module.css'
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 
@@ -56,28 +57,34 @@ export default function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Email:</label>
-        <input
-          type="email"
-          id="email"
-          value={email}
-          onChange={handleEmailChange}
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="password">Senha:</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={handlePasswordChange}
-          required
-        />
-      </div>
-      <button type="submit">Entrar</button>
-    </form>
-  );
+    <form className={styles['login-form']} onSubmit={handleSubmit}>
+    <div>
+      <label>Email:</label>
+      <input
+        type="email"
+        id="email"
+        value={email}
+        onChange={handleEmailChange}
+        required
+        className={styles['login-input']}
+        placeholder="Digite seu email"
+      />
+    </div>
+    <div>
+      <label htmlFor="password">Senha:</label>
+      <input
+        type="password"
+        id="password"
+        value={password}
+        onChange={handlePasswordChange}
+        required
+        className={styles['login-input']}
+        placeholder="Digite sua senha"
+      />
+    </div>
+    <button type="submit" className={styles['login-button']}>
+      Entrar
+    </button>
+  </form>
+);
 }

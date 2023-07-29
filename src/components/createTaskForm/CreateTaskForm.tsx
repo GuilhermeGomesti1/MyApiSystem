@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-
+import styles from "./styles.module.css"
 
 type Description = string;
 type Title = string;
@@ -66,26 +66,28 @@ export default function CreateTaskForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={styles.formContainer}>
       <div>
-        <label>Title:</label>
+        <label className={styles.formLabel}>Title:</label>
         <input
           type="text"
           value={title}
           onChange={handleTitleChange}
           required
+          className={styles.formInput}
         />
       </div>
       <div>
-        <label>Description:</label>
+        <label className={styles.formLabel}>Description:</label>
         <input
           type="text"
           value={description}
           onChange={handleDescriptionChange}
           required
+          className={styles.formInput}
         />
       </div>
-      <button type="submit">Create Task</button>
+      <button type="submit" className={styles.formButton}>Create Task</button>
     </form>
   );
 }
