@@ -45,8 +45,9 @@ export default function CreateTaskForm() {
           
           
         },
-        body: JSON.stringify({ title, description, authorization: `Bearer ${token}`, }),
+        body: JSON.stringify({ title, description }),
       });
+      
       console.log("Headers da requisição:", response.headers);
       if (response.ok) {
         console.log("Tarefa criada com sucesso!");

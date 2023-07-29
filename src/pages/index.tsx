@@ -5,6 +5,7 @@ import LoginForm from './login';
 
 import Link from 'next/link';
 
+export default funct
 export default function Home() {
   return (
     <>
