@@ -1,0 +1,31 @@
+.taskListContainer {
+    width: 90%;
+    margin: 20px auto;
+   
+    border-radius: 8px;
+    padding: 10px;
+  }
+  
+  .taskItem {
+    margin-bottom: 10px;
+    padding: 2px;
+   background-color:#0056b3 ;
+   
+    border-radius: 4px;
+  }
+  
+  .listTitle{align-items: center;
+    text-align: center;
+    color: wheat;
+    
+  }
+
+  .title{
+    color: white;
+    padding: 20px;
+  }
+
+  .description{
+    color: white;
+    padding: 20px;
+  }

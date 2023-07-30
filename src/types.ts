@@ -6,8 +6,9 @@ export interface TokenPayload {
 }
 
 export interface Task {
-  
-  userId: string;
+  taskId:string;
+  userId:string;
+  id: string;
   title:string;
   description: string;
   completed:boolean;
