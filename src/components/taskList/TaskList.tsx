@@ -1,32 +1,29 @@
-import React  from "react";
+import React from "react";
 import styles from "./styles.module.css";
+import { Task } from "@/types";
 
-type Task ={
-  id: string;
-    title: string;
-    description: string;
-}
 type TaskListProps = {
   tasks: Task[];
-  
+  onDeleteTask: (taskId: string) => void;
+};
+const TaskList: React.FC<TaskListProps> = ({ tasks, onDeleteTask }) => {
+  const handleDeleteTask = (taskId: string) => {
+    onDeleteTask(taskId);
+  };
 
+    
+  return (
+    <div className={styles.taskListContainer}>
+      <h2 className={styles.listTitle}>Lista de Tarefas</h2>
+      {tasks.map((task) => (
+        <div key={task.id} className={styles.taskItem}>
+          <p className={styles.title}>Título: {task.title}</p>
+          <p className={styles.description}>Descrição: {task.description}</p>
+          <button onClick={() => handleDeleteTask(task._id)}>Excluir</button>
+        </div>
+      ))}
+    </div>
+  );
 };
 
-
-  const TaskList: React.FC<TaskListProps> = ({ tasks} ) => {
-    return (
-      <div className={styles.taskListContainer}>
-        <h2 className={styles.listTitle}>Lista de Tarefas</h2>
-        {tasks.map((task, index) => (
-          <div key={index} className={styles.taskItem}>
-            <p className={styles.title}>Título: {task.title}</p>
-            <p className={styles.description}>Descrição: {task.description}</p>
-           
-            {/* Exiba outras propriedades da tarefa, se necessário */}
-          </div>
-        ))}
-      </div>
-    );
-  };
-  
-  export default TaskList;
+export default TaskList;

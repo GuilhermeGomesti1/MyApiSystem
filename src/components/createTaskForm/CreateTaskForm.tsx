@@ -4,9 +4,9 @@ import styles from "./styles.module.css"
 import TaskList from "../taskList/TaskList";
 import { Task } from "@/types";
 
-
 type Description = string;
 type Title = string;
+
 
 export default function CreateTaskForm() {
   const [title, setTitle] = useState<Title>("");
@@ -121,11 +121,63 @@ export default function CreateTaskForm() {
       setDescription("");
     }
   };
+  
+
+
+  const handleDeleteTask = async (_id: string)  => {
+  const token = localStorage.getItem("token");
+  const userId = localStorage.getItem("userId");
+
+  if (!token || !userId) {
+    alert("Usuário não autenticado. Faça o login primeiro.");
+    return;
+  }
+
+  try {
+    const response = await fetch(`http://localhost:8000/tasks/${_id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (response.ok) {
+      console.log(`Tarefa com ID ${_id} excluída com sucesso!`);
+
+      // Atualizar a lista de tarefas após a exclusão
+      const updatedTasksResponse = await fetch(
+        `http://localhost:8000/users/${userId}/tasks`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (updatedTasksResponse.ok) {
+        const updatedTasksData = await updatedTasksResponse.json();
+        setTasks(updatedTasksData);
+      } else {
+        throw new Error("Erro ao obter lista atualizada de tarefas do usuário.");
+      }
+    } else {
+      throw new Error(`Erro ao excluir tarefa com ID ${_id}`);
+    }
+  } catch (err) {
+    console.error("Erro ao excluir tarefa:", err);
+    alert("Erro ao excluir tarefa. Verifique o console para mais detalhes.");
+  }
+};
+
+
+
+  
 
  
   return (
     <div className={styles.container}>
-    <div className={styles.formContainer}> 
+    <div className={styles.formContainer}>
       <form onSubmit={handleSubmit}>
         <div>
           <label className={styles.formLabel}>Title:</label>
@@ -152,11 +204,9 @@ export default function CreateTaskForm() {
         </button>
       </form>
     </div>
-
     <div className={styles.divList}>
-    <TaskList tasks={tasks}  />
-</div>
-
+    <TaskList tasks={tasks} onDeleteTask={handleDeleteTask} />
+    </div>
   </div>
     
   );
