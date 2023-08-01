@@ -1,5 +1,3 @@
-
-
 export interface TokenPayload {
   userId: string;
   // Outros campos que possam existir no payload do token
@@ -7,9 +5,9 @@ export interface TokenPayload {
 
 export interface Task {
   _id: string;
-  userId:string;
+  userId: string;
   id: string;
-  title:string;
+  title: string;
   description: string;
-  completed:boolean;
+  completed: boolean;
 }
