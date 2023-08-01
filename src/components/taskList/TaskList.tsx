@@ -5,10 +5,13 @@ import { Task } from "@/types";
 type TaskListProps = {
   tasks: Task[];
   onDeleteTask: (taskId: string) => void;
+  onEditTask: (task: Task) => void;
+  
 };
-const TaskList: React.FC<TaskListProps> = ({ tasks, onDeleteTask }) => {
+const TaskList: React.FC<TaskListProps> = ({ tasks,  onDeleteTask, onEditTask, }) => {
   const handleDeleteTask = (taskId: string) => {
     onDeleteTask(taskId);
+   
   };
 
     
@@ -20,6 +23,7 @@ const TaskList: React.FC<TaskListProps> = ({ tasks, onDeleteTask }) => {
           <p className={styles.title}>Título: {task.title}</p>
           <p className={styles.description}>Descrição: {task.description}</p>
           <button onClick={() => handleDeleteTask(task._id)}>Excluir</button>
+          <button onClick={() => onEditTask(task)}>Edit</button>
         </div>
       ))}
     </div>

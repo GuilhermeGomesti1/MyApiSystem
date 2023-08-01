@@ -17,10 +17,11 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.welcome}>hello world</h1>
+        <span className={styles.span}>Gerencia sua agenda de forma fácil.</span>
         <LoginForm />
 
         <Link href="/signup" passHref>
-          <button className={styles.buttonSignUp}>Signup</button>
+          <button className={styles.buttonSignUp}>Não possui uma conta? Cadastre-se</button>
         </Link>
         
         <div></div>

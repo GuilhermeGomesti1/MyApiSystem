@@ -13,6 +13,8 @@ export default function CreateTaskForm() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [userId, setUserId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const [editingTask, setEditingTask] = useState<Task | null>(null);
+  const [isEditing, setIsEditing] = useState(false);
 
   const router = useRouter();
   useEffect(() => {
@@ -74,47 +76,87 @@ export default function CreateTaskForm() {
     }
 
     try {
-      const response = await fetch(`http://localhost:8000/${userId}/tasks`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ title, description }),
-      });
-
-      console.log("Headers da requisição:", response.headers);
-      if (response.ok) {
-        console.log("Tarefa criada com sucesso!");
-        router.push("/tasks");
-
-        const tasksResponse = await fetch(
-          `http://localhost:8000/users/${userId}/tasks`,
+      if (isEditing && editingTask) {
+        const response = await fetch(
+          `http://localhost:8000/tasks/${editingTask._id}`,
           {
-            method: "GET",
+            method: "PUT", // or PATCH, depending on your API
             headers: {
+              "Content-Type": "application/json",
               Authorization: `Bearer ${token}`,
             },
+            body: JSON.stringify({ title, description }),
           }
         );
 
-        if (tasksResponse.ok) {
-          const tasksData = await tasksResponse.json();
-          setTasks(tasksData);
+        if (response.ok) {
+          console.log(`Tarefa com ID ${editingTask._id} editada com sucesso!`);
+          setEditingTask(null);
+          setIsEditing(false);
+          // Atualizar a lista de tarefas após a edição
+          const tasksResponse = await fetch(
+            `http://localhost:8000/users/${userId}/tasks`,
+            {
+              method: "GET",
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+
+          if (tasksResponse.ok) {
+            const tasksData = await tasksResponse.json();
+            setTasks(tasksData);
+          } else {
+            throw new Error("Erro ao obter lista de tarefas do usuário.");
+          }
+        } else {
+          throw new Error("Erro ao editar tarefa");
         }
       } else {
-        throw new Error("Erro ao criar tarefa");
+        // Código de criação de tarefa (já existente no seu código atual)
+        const response = await fetch(`http://localhost:8000/${userId}/tasks`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ title, description }),
+        });
+
+        console.log("Headers da requisição:", response.headers);
+        if (response.ok) {
+          console.log("Tarefa criada com sucesso!");
+          router.push("/tasks");
+
+          const tasksResponse = await fetch(
+            `http://localhost:8000/users/${userId}/tasks`,
+            {
+              method: "GET",
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+
+          if (tasksResponse.ok) {
+            const tasksData = await tasksResponse.json();
+            setTasks(tasksData);
+          }
+        } else {
+          throw new Error("Erro ao criar tarefa");
+        }
       }
     } catch (err) {
-      console.error("Erro ao criar tarefa:", err);
-      alert("Erro ao criar tarefa. Verifique o console para mais detalhes.");
+      console.error("Erro ao criar/editar tarefa:", err);
+      alert(
+        "Erro ao criar/editar tarefa. Verifique o console para mais detalhes."
+      );
     } finally {
       setTitle("");
       setDescription("");
     }
   };
-
   const handleDeleteTask = async (_id: string) => {
     const token = localStorage.getItem("token");
     const userId = localStorage.getItem("userId");
@@ -163,6 +205,14 @@ export default function CreateTaskForm() {
     }
   };
 
+  const handleEditTask = (task: Task) => {
+    setEditingTask(task);
+    setTitle(task.title);
+    setDescription(task.description);
+    setIsEditing(true);
+  };
+
+
   return (
     <div className={styles.container}>
       <div className={styles.formContainer}>
@@ -188,12 +238,12 @@ export default function CreateTaskForm() {
             />
           </div>
           <button type="submit" className={styles.formButton}>
-            Create Task
+            {isEditing ? "Update Task" : "Create Task"}
           </button>
         </form>
       </div>
       <div className={styles.divList}>
-        <TaskList tasks={tasks} onDeleteTask={handleDeleteTask} />
+        <TaskList tasks={tasks} onDeleteTask={handleDeleteTask} onEditTask={handleEditTask}  />
       </div>
     </div>
   );

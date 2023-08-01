@@ -1,25 +1,28 @@
 
 
 .main{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
     background-color: var(--color-secondary);
     color: white;
 }
 
 .welcome{
-    font-size: 3rem;
-  margin-bottom: 2rem;
+    font-size: 48px;
+  margin-bottom: 8px;
   color:#28B4E9;
 }
-
+.span{
+  margin-bottom: 20px;
+}
 
 .buttonSignUp {
     padding: 10px;
-    margin-top: 5px;
+    margin-top: 20px;
     background-color: #004E84;
     color: white;
     border: none;
