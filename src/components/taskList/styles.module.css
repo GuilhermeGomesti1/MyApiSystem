@@ -7,25 +7,64 @@
   }
   
   .taskItem {
+    margin-top: 10px;
     margin-bottom: 10px;
     padding: 2px;
-   background-color:#0056b3 ;
+   
    
     border-radius: 4px;
   }
   
   .listTitle{align-items: center;
     text-align: center;
-    color: wheat;
+    color: #EBA61E;
+   
     
   }
 
-  .title{
+  .titleTask{ 
+    background-color: #ccc;
+    font-size: 20px;
+    font-weight: bold;
+   
+  }
+  .title{ background-color: #ccc;
+    color: #0A459E;
+    padding: 20px;
+   border-top-right-radius: 8px ;
+   border-top-left-radius: 8px;
+    text-align: center
+  }
+
+  .description{
+    background-color:cornflowerblue ;
     color: white;
     padding: 20px;
   }
 
-  .description{
+
+  .buttonEditTask,
+  .buttonDeleteTask {
+    margin-top: 8px;
+    width:70px; 
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .buttonEditTask {
+    background-color: #B8DB32;
+    color: #0A459E;
+  }
+  
+  .buttonDeleteTask {
+    background-color: #52211d;
     color: white;
-    padding: 20px;
+  }
+  
+  .buttonEditTask + .buttonDeleteTask {
+    margin-left: 10px; /* Adjust the spacing as needed */
   }

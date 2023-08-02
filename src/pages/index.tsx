@@ -17,7 +17,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.welcome}>hello world</h1>
-        <span className={styles.span}>Gerencia sua agenda de forma fácil.</span>
+        <span className={styles.span}>Gerencia suas tarefas de forma fácil.</span>
         <LoginForm />
 
         <Link href="/signup" passHref>

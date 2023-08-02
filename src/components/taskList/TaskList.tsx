@@ -20,10 +20,11 @@ const TaskList: React.FC<TaskListProps> = ({ tasks,  onDeleteTask, onEditTask, }
       <h2 className={styles.listTitle}>Lista de Tarefas</h2>
       {tasks.map((task) => (
         <div key={task.id} className={styles.taskItem}>
-          <p className={styles.title}>Título: {task.title}</p>
-          <p className={styles.description}>Descrição: {task.description}</p>
-          <button onClick={() => handleDeleteTask(task._id)}>Excluir</button>
-          <button onClick={() => onEditTask(task)}>Edit</button>
+          <p className={styles.title}><span className={styles.titleTask}></span> {task.title}</p>
+          <p className={styles.description}> {task.description}</p>
+          
+          <button onClick={() => onEditTask(task)} className={styles.buttonEditTask}>Edit</button>
+          <button onClick={() => handleDeleteTask(task._id)} className={styles.buttonDeleteTask}>Excluir</button>
         </div>
       ))}
     </div>

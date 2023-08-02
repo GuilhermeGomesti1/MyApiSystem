@@ -2,75 +2,91 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 48px;
 }
 
 .formContainer {
-    width: 50%;
+   align-items: flex-start;
+  width: 50%;
   margin: 100px auto 20px;
   padding: 20px;
-  
   border-radius: 8px;
-
-  /* Centralizar vertical e horizontalmente */
+  border: none;
+}
+.formTitle {
+  text-align: center;
+  color: white;
+  font-size: 48px;
+  margin-bottom: 40px;
   
 }
-  
-  /* Estilo para os rótulos */
-  .formLabel {color: #ccc;
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
 
-  .formLabeld {color: #ccc;
-    
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  /* Estilo para as entradas de texto */
-  .formInput { 
-    color:white;
-    width: 100%;
-    padding: 8px 0;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
+/* Estilo para os rótulos */
+.formLabel {
+  color: #ccc;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
 
-  .formInputd {
-    color:white;
-    width: 100%;
-    padding: 100px 0;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  /* Estilo para o botão de enviar */
-  .formButton {
-    padding: 10px 20px;
-    background-color: #004988;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .formButton:hover {
-    background-color: #0056b3;
-  }
+.formLabeld {
+  color: #ccc;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
 
- 
-  
+/* Estilo para as entradas de texto */
+.formInput { resize: none;
+  color: #004988;
+  width: 100%;
+  padding: 8px 0;
+  margin-bottom: 15px;
+  background-color: #ccc;
+  border-radius: 4px;
+  vertical-align: top; 
+}
+
+.formInputd {
+  resize: none;
+ font-size: 16px;
+  color: #004988;
+  width: 100%;
+  height: 100px;
+  margin-bottom: 15px;
+ background-color: #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  vertical-align: top; 
+  word-wrap: break-word; 
+  overflow: auto; 
+
+}
+
+
+
+
+/* Estilo para o botão de enviar */
+.formButton {
+  padding: 10px 20px;
+  background-color: #004988;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.formButton:hover {
+  background-color: #0056b3;
+}
+
 .divList {
   width: 50%;
   margin: 20px auto;
-
   border-radius: 8px;
   padding: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  
 }

@@ -216,6 +216,7 @@ export default function CreateTaskForm() {
   return (
     <div className={styles.container}>
       <div className={styles.formContainer}>
+        <h1 className={styles.formTitle}>Crie e gerencia suas tarefas</h1>
         <form onSubmit={handleSubmit}>
           <div>
             <label className={styles.formLabel}>Title:</label>
