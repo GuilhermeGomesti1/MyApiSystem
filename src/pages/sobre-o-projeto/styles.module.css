@@ -1,0 +1,29 @@
+.container {
+   
+    color: #fff;
+    padding: 20px;
+  }
+  
+  .tituloPrincipal {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  .descricao {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .subtitulo {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .lista {
+    list-style: square;
+    margin-left: 20px;
+  }
+  
+  .lista-item {
+    margin-bottom: 5px;
+  }

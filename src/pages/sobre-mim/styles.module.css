@@ -1,0 +1,54 @@
+/* styles.module.css */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para destacar o conteúdo */
+  }
+  
+  .titulo {
+    color: #2979ff; /* Azul mais claro para destacar o título principal */
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 15px;
+  }
+  
+  .subtitulo {
+    color: #9E6900; /* Verde mais claro para destacar os subtítulos */
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .descricao {
+    color: #ccc;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-top: 10px;
+  }
+  
+  .contato {
+    color: #2979ff; /* Azul mais claro para destacar os contatos */
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .container {
+      padding: 10px;
+    }
+  
+    .titulo {
+      font-size: 24px;
+    }
+  
+    .subtitulo {
+      font-size: 18px;
+    }
+  
+    .descricao {
+      font-size: 16px;
+    }
+  }
+  

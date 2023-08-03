@@ -17,7 +17,11 @@ const TaskList: React.FC<TaskListProps> = ({ tasks,  onDeleteTask, onEditTask, }
     
   return (
     <div className={styles.taskListContainer}>
-      <h2 className={styles.listTitle}>Lista de Tarefas</h2>
+       {tasks.length === 0 ? ( // Verifica se a lista de tarefas está vazia
+        <h2 className={styles.listTitle}> </h2>
+      ) : (
+        <h2 className={styles.listTitle}>Lista de Tarefas</h2>
+      )}
       {tasks.map((task) => (
         <div key={task.id} className={styles.taskItem}>
           <p className={styles.title}><span className={styles.titleTask}></span> {task.title}</p>

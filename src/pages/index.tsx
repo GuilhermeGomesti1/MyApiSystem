@@ -4,7 +4,8 @@ import styles from "@/styles/Home.module.css";
 import LoginForm from "./login";
 
 import Link from "next/link";
-import Footer from "@/components/footer/footer";
+
+import Header from "@/components/header/header";
 
 export default function Home() {
   
@@ -14,7 +15,7 @@ export default function Home() {
         <title>Sign-in / Sign-up</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <Header /> 
       <main className={styles.main}>
         <h1 className={styles.welcome}>hello world</h1>
         <span className={styles.span}>Gerencia suas tarefas de forma fácil.</span>
@@ -26,7 +27,7 @@ export default function Home() {
         
         <div></div>
       </main>
-      <Footer />
+    
     </>
   );
 }

@@ -1,7 +1,8 @@
 .container {
-  display: flex;
+  
   flex-direction: column;
   align-items: center;
+  min-height: 100vh; 
   margin-top: 48px;
 }
 
@@ -37,7 +38,8 @@
 }
 
 /* Estilo para as entradas de texto */
-.formInput { resize: none;
+.formInput {  
+  align-items: flex-start;
   color: #004988;
   width: 100%;
   padding: 8px 0;
@@ -47,20 +49,18 @@
   vertical-align: top; 
 }
 
-.formInputd {
-  resize: none;
- font-size: 16px;
+.formInputd {resize: none;
+  font-size: 16px;
   color: #004988;
   width: 100%;
   height: 100px;
   margin-bottom: 15px;
- background-color: #ccc;
+  background-color: #ccc;
   border-radius: 4px;
   box-sizing: border-box;
-  vertical-align: top; 
-  word-wrap: break-word; 
-  overflow: auto; 
-
+ 
+  word-wrap: break-word;
+  overflow: auto;
 }
 
 
