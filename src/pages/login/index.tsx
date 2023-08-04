@@ -84,28 +84,30 @@ export default function LoginForm() {
   };
 
   return (
-    <form className={styles["login-form"]} onSubmit={handleSubmit}>
-      <div>
-        <label>Email:</label>
+    <form className={styles.loginForm} onSubmit={handleSubmit}>
+       <h1 className={styles.welcome}>Acesso ao Painel</h1>
+        <span className={styles.span}>Gerencie suas tarefas de forma fácil.</span>
+      <div className={styles.divInput}>
+        <label className={styles.divInput}>Email:</label>
         <input
           type="email"
           id="email"
           value={email}
           onChange={handleEmailChange}
           required
-          className={styles["login-input"]}
+          className={styles.loginInput}
           placeholder="Digite seu email"
         />
       </div>
-      <div>
-        <label htmlFor="password">Senha:</label>
+      <div className={styles.divInput}>
+        <label htmlFor="password" className={styles.divInput}>Senha:</label>
         <input
           type="password"
           id="password"
           value={password}
           onChange={handlePasswordChange}
           required
-          className={styles["login-input"]}
+          className={styles.loginInput}
           placeholder="Digite sua senha"
         />
       </div>

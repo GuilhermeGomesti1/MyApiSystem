@@ -1,46 +1,94 @@
+.allContent{
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+.main { 
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content:space-around ;
+  height: 85vh;
+  width: 100%;
+  background-color: #130D20;
+  color: white;
+}
+
+.image{
+  flex: 1;
 
 
-.main{
+}
+.titleAndImage{display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  text-align: center;
+  
+}
+.textHome{padding-bottom: 2rem;
+  
+  font-size: 2em;
+}
+
+.formContainer {
+  max-width: 40%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 100%;
-    background-color: var(--color-secondary);
-    color: white;
-}
-
-.welcome{
-    font-size: 48px;
-  margin-bottom: 8px;
-  color:#28B4E9;
-}
-.span{
-  margin-bottom: 20px;
+  margin-top: 2rem; 
 }
 
 .buttonSignUp {
-    padding: 10px;
-    margin-top: 2px;
+  padding: 10px;
+  margin-top: 2px;
+  background-color: #130D20;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Estilo do botão de signup quando hover */
+.buttonSignUp:hover {
+  color: #64b7cc;
+  /* Adicione uma transição suave para a mudança de cor */
+  transition: background-color 1s ease;
+}
+
+/* Estilo do botão de signup quando desabilitado */
+.buttonSignUp:disabled {
+  background-color: #b8db32;
+  cursor: not-allowed;
+}
+
+
+@media (max-width: 768px) {
+ 
+  .main {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  .image{
+    max-width: 100%;
+    margin-right: 0;
+  }
+
+  .formContainer{
+    max-width: 70%;
     
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
+    margin-bottom: 20px;
+  }
+
+  .textHome{padding-bottom: 2rem;
+    padding-top: 2rem;
+    font-size: 2em;
   }
   
-  /* Estilo do botão de signup quando hover */
-  .buttonSignUp:hover {
-    color: #64B7CC;
-    /* Adicione uma transição suave para a mudança de cor */
-    transition: background-color 1s ease;
-  }
-  
-  /* Estilo do botão de signup quando desabilitado */
-  .buttonSignUp:disabled {
-    background-color: #B8DB32;
-    cursor: not-allowed;
-  }
-  
+}

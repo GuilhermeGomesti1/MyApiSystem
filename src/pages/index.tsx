@@ -6,28 +6,38 @@ import LoginForm from "./login";
 import Link from "next/link";
 
 import Header from "@/components/header/header";
+import Footer from "@/components/footer/footer";
 
 export default function Home() {
-  
   return (
     <>
       <Head>
         <title>Sign-in / Sign-up</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/icon.ico" />
       </Head>
-      <Header /> 
-      <main className={styles.main}>
-        <h1 className={styles.welcome}>hello world</h1>
-        <span className={styles.span}>Gerencia suas tarefas de forma fácil.</span>
-        <LoginForm />
+      <div className={styles.allContent}>
+        <Header />
+        <main className={styles.main}>
+          <div className={styles.titleAndImage}>
+            <h1 className={styles.textHome}>
+              CRIE E ORGANIZE SUAS TAREFAS COM FACILIDADE
+            </h1>
+            <img className={styles.image} src="/imagemHome.png" alt="" />
+          </div>
 
-        <Link href="/signup" passHref>
-          <button className={styles.buttonSignUp}>Não possui uma conta? Cadastre-se</button>
-        </Link>
-        
-        <div></div>
-      </main>
-    
+          <div className={styles.formContainer}>
+            <LoginForm />
+            <Link href="/signup" passHref>
+              <button
+                className={`${styles.buttonSignUp} ${styles.buttonSignUpSignup}`}
+              >
+                Não possui uma conta? Cadastre-se
+              </button>
+            </Link>
+          </div>
+        </main>
+        <Footer />
+      </div>
     </>
   );
 }

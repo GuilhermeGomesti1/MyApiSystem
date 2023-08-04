@@ -1,24 +1,37 @@
-/* styles.module.css */
 
-/* Estilo do formulário */
-.login-form {
+.loginForm {background-color: #FFFFFF;
+  align-items: center;
+  padding: 50px;
+  margin: 30px;
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 600px;
-    ;
-    border-radius: 5px;
+  border-radius: 5px;
   }
-  
+  .welcome {
+    background-color: #FFFFFF;
+    font-size: 48px;
+    margin-bottom: 8px;
+    color: #68D2DF;
+  }
+  .span {color: black;
+    background-color: #FFFFFF;
+    margin-bottom: 20px;
+  }
+  .divInput{ width: 100%;
+    color: black;
+    background-color: #FFFFFF;
+  }
   /* Estilo dos campos de input */
-  .login-input {
+  .loginInput { color:   #11111F;;
     border: 0px;
     margin-bottom: 12px;
     height: 36px;
     border-radius: 4px;
-    background-color: white;
+    background-color: #68d1df4f;
     font-size: 16px;
-    color: #004988;
+    
     width: 100%;
   }
   
@@ -33,7 +46,7 @@
   }
   
   /* Estilo do botão de login */
-  .login-button {
+  .login-button {width: 100%;
     padding: 10px;
     background-color: #026CB6;
     color: #E7F6F9;

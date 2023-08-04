@@ -4,4 +4,7 @@
   tertiary: "#3B89FF",
   quaternary: "#9E6900",
   quinary: "#EBA61E",
+  #11111F
+  #68D2DF
+
 }; */
