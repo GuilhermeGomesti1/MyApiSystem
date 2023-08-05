@@ -1,6 +1,7 @@
 import { useState, FormEvent } from "react";
 import { useRouter } from "next/router";
 import styles from "./styles.module.css";
+import Header from "@/components/header/header";
 
 export default function Signup() {
   const router = useRouter();
@@ -62,41 +63,57 @@ export default function Signup() {
 
   return (
     <div>
-      <h1 className={styles.signUpTitle}>Signup</h1>
+      <Header />
+
+      <h1 className={styles.signUpTitle}>CADASTRE-SE PARA TER ACESSO</h1>
       <form className={styles["signup-form"]} onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="First Name"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-          className={styles["signup-input"]}
-        />
-        <input
-          type="text"
-          placeholder="Last Name"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-          className={styles["signup-input"]}
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className={styles["signup-input"]}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className={styles["signup-input"]}
-        />
+        <div className={styles.divInput}>
+        <label className={styles.divInput}>First Name:</label>
+          <input
+            type="text"
+            placeholder="First Name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            className={styles["signup-input"]}
+          />
+        </div>
+
+        <div className={styles.divInput}>
+        <label className={styles.divInput}>Last Name:</label>
+          <input
+            type="text"
+            placeholder="Last Name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            className={styles["signup-input"]}
+          />{" "}
+        </div>
+
+        <div className={styles.divInput}>
+        <label className={styles.divInput}>Email:</label>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className={styles["signup-input"]}
+          />
+        </div>
+        <div className={styles.divInput}>
+        <label className={styles.divInput}>Password:</label>
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className={styles["signup-input"]}
+          />{" "}
+        </div>
         <button type="submit" className={styles["signup-button"]}>
           Signup
         </button>
       </form>
-      <a  href="/" className={styles.aGoToLogin}>
+      <a href="/" className={styles.aGoToLogin}>
         <h2 className={styles.gotologin}>
           Já possui uma conta? faça o login e administre suas tarefas.
         </h2>
