@@ -4,6 +4,7 @@ export interface TokenPayload {
 }
 
 export interface Task {
+  taskId:string;
   _id: string;
   userId: string;
   id: string;

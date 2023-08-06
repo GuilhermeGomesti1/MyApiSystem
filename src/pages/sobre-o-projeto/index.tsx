@@ -1,12 +1,15 @@
 import React from "react";
 import styles from "./styles.module.css";
 import Header from "@/components/header/header";
+import Footer from "@/components/footer/footer";
 
 const SobreOProjeto: React.FC = () => (
   <>
     <Header />
+   
     <div className={styles.container}>
-      <h1 className={styles.tituloPrincipal}>Descrição do Projeto</h1>
+    <img className={styles.image} src="/imagemHome.png" alt="Logo da aplicação" />
+  
       <p className={styles.descricao}>
         Meu projeto é uma aplicação web desenvolvida com Next.js que tem como
         objetivo facilitar o gerenciamento de tarefas de forma fácil e
@@ -64,7 +67,8 @@ const SobreOProjeto: React.FC = () => (
 
       <div>
         <h2 className={styles.subtitulo}>Funcionamento:</h2>
-        <p className={styles.descricao}>
+       
+        <p className={styles.textFuncionamento}>
           Após autenticar-se, os usuários são redirecionados para a página de
           gerenciamento de tarefas. Lá, eles podem criar novas tarefas, editar
           tarefas existentes e excluir tarefas concluídas. Todas as operações
@@ -72,7 +76,9 @@ const SobreOProjeto: React.FC = () => (
           atualizadas e acessíveis em futuros acessos à aplicação.
         </p>
       </div>
+      
     </div>
+    <Footer />
   </>
 );
 

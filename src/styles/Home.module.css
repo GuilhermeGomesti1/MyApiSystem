@@ -42,21 +42,22 @@
 }
 
 .buttonSignUp {
-  padding: 10px;
-  margin-top: 2px;
+
+ 
   background-color: #130D20;
   color: white;
   border: none;
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
+  transition: color 0.2s ease;
 }
 
 /* Estilo do botão de signup quando hover */
 .buttonSignUp:hover {
   color: #64b7cc;
   /* Adicione uma transição suave para a mudança de cor */
-  transition: background-color 1s ease;
+
 }
 
 /* Estilo do botão de signup quando desabilitado */

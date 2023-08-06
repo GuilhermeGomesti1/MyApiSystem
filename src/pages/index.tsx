@@ -20,7 +20,7 @@ export default function Home() {
             <h1 className={styles.textHome}>
               CRIE E ORGANIZE SUAS TAREFAS COM FACILIDADE
             </h1>
-            <img className={styles.image} src="/imagemHome.png" alt="" />
+            <img className={styles.image} src="/imagemHome.png" alt="Logo da aplicação" />
           </div>
 
           <div className={styles.formContainer}>

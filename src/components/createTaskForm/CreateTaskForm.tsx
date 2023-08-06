@@ -15,9 +15,13 @@ export default function CreateTaskForm() {
   const [loading, setLoading] = useState(true);
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [isEditing, setIsEditing] = useState(false);
-
+  const [isCreateTaskModalOpen, setIsCreateTaskModalOpen] = useState(false);
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [taskToEdit, setTaskToEdit] = useState<Task | null>(null);
   const router = useRouter();
-  useEffect(() => {
+
+ 
     // Função para carregar as tarefas do usuário após o login
     const loadTasks = async () => {
       const token = localStorage.getItem("token");
@@ -48,7 +52,7 @@ export default function CreateTaskForm() {
       setUserId(userId || null);
       setLoading(false);
     };
-
+    useEffect(() => {
     loadTasks();
   }, []);
 
@@ -60,6 +64,18 @@ export default function CreateTaskForm() {
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     setDescription(event.target.value);
+  };
+
+  const handleOpenCreateTaskModal = () => {
+    setIsCreateTaskModalOpen(true);
+    setTaskToEdit(null); // Limpa a tarefa que estava sendo editada
+    setTitle("");
+    setDescription("");
+  };
+
+  const handleCloseCreateTaskModal = () => {
+    setIsCreateTaskModalOpen(false);
+    setIsFormSubmitted(false);
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -75,44 +91,52 @@ export default function CreateTaskForm() {
       return;
     }
 
-    try {
-      if (isEditing && editingTask) {
-        const response = await fetch(
-          `http://localhost:8000/tasks/${editingTask._id}`,
+    
+  try {
+    if (taskToEdit) { // Verifique se há uma tarefa para editar
+      const response = await fetch(
+        `http://localhost:8000/tasks/${taskToEdit._id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ title, description }) , 
+        }  
+      );
+     
+      if (response.ok) {
+        console.log(`Tarefa com ID ${taskToEdit._id} editada com sucesso!`);
+        setTasks((tarefasAntigas) =>
+        tarefasAntigas.map((tarefa) =>
+          tarefa._id === taskToEdit._id ? { ...tarefa, title, description } : tarefa
+        )
+      );
+        setTaskToEdit(null); // Redefina taskToEdit após a atualização bem-sucedida
+        setIsEditModalOpen(false);
+      
+        // Atualizar a lista de tarefas após a edição
+        const tasksResponse = await fetch(
+          `http://localhost:8000/users/${userId}/tasks`,
           {
-            method: "PUT", // or PATCH, depending on your API
+            method: "GET",
             headers: {
-              "Content-Type": "application/json",
               Authorization: `Bearer ${token}`,
             },
-            body: JSON.stringify({ title, description }),
           }
         );
 
-        if (response.ok) {
-          console.log(`Tarefa com ID ${editingTask._id} editada com sucesso!`);
-          setEditingTask(null);
-          setIsEditing(false);
-          // Atualizar a lista de tarefas após a edição
-          const tasksResponse = await fetch(
-            `http://localhost:8000/users/${userId}/tasks`,
-            {
-              method: "GET",
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          );
-
-          if (tasksResponse.ok) {
-            const tasksData = await tasksResponse.json();
-            setTasks(tasksData);
-          } else {
-            throw new Error("Erro ao obter lista de tarefas do usuário.");
-          }
+        if (tasksResponse.ok) {
+          const tasksData = await tasksResponse.json();
+          setTasks(tasksData);
+          await loadTasks();
         } else {
-          throw new Error("Erro ao editar tarefa");
+          throw new Error("Erro ao obter lista de tarefas do usuário.");
         }
+      } else {
+        throw new Error("Erro ao editar tarefa");
+      }
       } else {
         // Código de criação de tarefa (já existente no seu código atual)
         const response = await fetch(`http://localhost:8000/${userId}/tasks`, {
@@ -142,6 +166,8 @@ export default function CreateTaskForm() {
           if (tasksResponse.ok) {
             const tasksData = await tasksResponse.json();
             setTasks(tasksData);
+            setIsCreateTaskModalOpen(false);
+            
           }
         } else {
           throw new Error("Erro ao criar tarefa");
@@ -157,6 +183,7 @@ export default function CreateTaskForm() {
       setDescription("");
     }
   };
+
   const handleDeleteTask = async (_id: string) => {
     const token = localStorage.getItem("token");
     const userId = localStorage.getItem("userId");
@@ -206,46 +233,113 @@ export default function CreateTaskForm() {
   };
 
   const handleEditTask = (task: Task) => {
-    setEditingTask(task);
+    setTaskToEdit(task);
     setTitle(task.title);
     setDescription(task.description);
-    setIsEditing(true);
+   
+    setIsEditModalOpen(true);
+    setIsCreateTaskModalOpen(false);
   };
-
 
   return (
     <div className={styles.container}>
-      <div className={styles.formContainer}>
-        <h1 className={styles.formTitle}>Crie e gerencia suas tarefas</h1>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label className={styles.formLabel}>Title:</label>
-            <input
-              type="text"
-              value={title}
-              onChange={handleTitleChange}
-              required
-              className={styles.formInput}
-            />
+      {/* Div to darken the background */}
+      {isCreateTaskModalOpen && !isFormSubmitted && (
+        <div
+          className={styles.modalBackdrop}
+          onClick={handleCloseCreateTaskModal}
+        />
+      )}
+
+      {/* Modal for creating and managing tasks */}
+      {isCreateTaskModalOpen && !isFormSubmitted && (
+        <div className={styles.modal}>
+          <div className={styles.formContainer}>
+            <h1 className={styles.formTitle}>
+              {isEditing ? "Edit Task" : "Create and Manage Your Tasks"}
+            </h1>
+            <form onSubmit={handleSubmit}>
+              <div>
+                <label className={styles.formLabel}>Title:</label>
+                <input
+                  type="text"
+                  value={title}
+                  onChange={handleTitleChange}
+                  required
+                  className={styles.formInput}
+                />
+              </div>
+              <div>
+                <label className={styles.formLabeld}>Description:</label>
+                <input
+                  type="text"
+                  value={description}
+                  onChange={handleDescriptionChange}
+                  required
+                  className={styles.formInputd}
+                />
+              </div>
+              <button type="submit" className={styles.formButton}>
+                {isEditing ? "Update Task" : "Create Task"}
+              </button>
+            </form>
           </div>
-          <div>
-            <label className={styles.formLabeld}>Description:</label>
-            <input
-              type="text"
-              value={description}
-              onChange={handleDescriptionChange}
-              required
-              className={styles.formInputd}
-            />
-          </div>
-          <button type="submit" className={styles.formButton}>
-            {isEditing ? "Update Task" : "Create Task"}
-          </button>
-        </form>
-      </div>
+        </div>
+      )}
+
+      {/* Button to open the "Create Task" modal */}
+      {!isCreateTaskModalOpen ? (
+        <button
+          type="button"
+          onClick={handleOpenCreateTaskModal}
+          className={styles.formButton}
+        >
+          Create Task
+        </button>
+      ) : null}
+
+      {/* Task list */}
       <div className={styles.divList}>
-        <TaskList tasks={tasks} onDeleteTask={handleDeleteTask} onEditTask={handleEditTask}  />
+        <TaskList
+          tasks={tasks}
+          onDeleteTask={handleDeleteTask}
+          onEditTask={handleEditTask}
+        />
       </div>
+
+      {/* Modal for editing task */}
+      {isEditModalOpen && taskToEdit && (
+        <div className={styles.modal}>
+          <div className={styles.formContainer}>
+            <h1 className={styles.formTitle}>Edit Task</h1>
+            <form onSubmit={handleSubmit}>
+              <div>
+                <label className={styles.formLabel}>Title:</label>
+                <input
+                  type="text"
+                  value={title}
+                  onChange={handleTitleChange}
+                  required
+                  className={styles.formInput}
+                />
+              </div>
+              <div>
+                <label className={styles.formLabeld}>Description:</label>
+                <input
+                  type="text"
+                  value={description}
+                  onChange={handleDescriptionChange}
+                  required
+                  className={styles.formInputd}
+                />
+              </div>
+              <button type="submit" className={styles.formButton}>
+                Update Task
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

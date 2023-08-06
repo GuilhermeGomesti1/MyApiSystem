@@ -1,29 +1,64 @@
 .container {
-   
-    color: #fff;
-    padding: 20px;
-  }
-  
-  .tituloPrincipal {
-    font-size: 36px;
-    margin-bottom: 20px;
-  }
-  
-  .descricao {
-    font-size: 18px;
-    margin-bottom: 20px;
-  }
-  
-  .subtitulo {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .lista {
-    list-style: square;
-    margin-left: 20px;
-  }
-  
-  .lista-item {
-    margin-bottom: 5px;
-  }
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  margin: auto 0;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.image {
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.tituloPrincipal {
+  text-align: center;
+  color: #28b4e9; /* Azul mais claro para destacar o título principal */
+  font-size: 40px;
+  font-weight: bold;
+  margin-top: 25px;
+}
+
+.descricao {
+  text-align: justify;
+  color: white;
+  font-size: 20px;
+  line-height: 1.6;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  padding: 30px;
+}
+
+.subtitulo {
+  text-align: center;
+  color: #28b4e9;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.lista {
+  color: white;
+  text-align: center;
+  list-style: none;
+  margin-left: 20px;
+}
+
+.lista-item {
+  margin-bottom: 5px;
+}
+
+.textFuncionamento {
+  text-align: center;
+  color: white;
+  line-height: 1.6;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  padding: 10px;
+}

@@ -1,3 +1,28 @@
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Cor de fundo semitransparente */
+  z-index: 1000; /* Z-index alto para colocar por cima de todo o conteúdo */
+}
+
+/* Estilos para a modal que contém o formulário */
+.modal {
+  /* Estilos para posicionar a modal no centro da tela */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff; /* Cor de fundo da modal */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona sombra à modal */
+  z-index: 1001; /* Z-index maior do que a div de fundo para ficar por cima dela */
+}
+
+
 .container {
   
   flex-direction: column;
@@ -17,11 +42,13 @@
 }
 .formTitle {
   text-align: center;
-  color: white;
-  font-size: 48px;
-  margin-bottom: 40px;
-  
+  color: #28b4e9; 
+  font-size: 40px;
+  font-weight: bold;
+ padding-bottom: 40px;
 }
+  
+
 
 /* Estilo para os rótulos */
 .formLabel {
