@@ -20,7 +20,7 @@
 
 .projects {
   background-color: white;
-  transition: height 0.5s ease; 
+  transition: height 1s ease; 
 
 }
 
@@ -89,7 +89,23 @@
   width: 80%;
 }
 
-.contato { width: 80%;
+.contato { 
+  text-align: center;
+  color: #2979ff; /* Azul mais claro para destacar os contatos */
+  font-size: 16px;
+  line-height: 1.6;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+ 
+  list-style-type: none;
+}
+
+
+.contato a {
+  list-style-type: none;
+  padding: 0; 
   text-align: center;
   color: #2979ff; /* Azul mais claro para destacar os contatos */
   font-size: 16px;
@@ -98,12 +114,21 @@
   margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
-  width: 80%;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contato a:hover {
+   
+  color: #68d1dfd7;
+  
+
 }
 
 .vejaMaisMenosContainer {background-color: white;
   text-align: center;
   text-decoration: none;
+  transition: opacity 1s ease;
  
 }
 .vejaMaisMenos {background-color: white;

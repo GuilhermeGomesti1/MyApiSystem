@@ -5,6 +5,7 @@ import Header from "@/components/header/header";
 import { PersonIcon } from "@/components/icons/iconsSobreMim/person";
 import Image from "next/image";
 import { ArrowDown } from "@/components/icons/iconsSobreMim/arrowdown";
+import { CopyIcon } from "@/components/icons/iconsSobreMim/copyIcon";
 
 const SobreMim: React.FC = () => {
   const [showProjects, setShowProjects] = useState(false);
@@ -61,7 +62,9 @@ const SobreMim: React.FC = () => {
           projeto foi entregue com sucesso ao cliente.
         </p>
 
-        <div className={`${styles.projects} ${showProjects ? "" : styles.hide}`}>
+        <div
+          className={`${styles.projects} ${showProjects ? "" : styles.hide}`}
+        >
           <h1 className={styles.projectsh1}>Projetos Concluídos e Educação:</h1>
 
           <p className={styles.projectsh2}>Healthy-Life-Nutrition:</p>
@@ -125,8 +128,8 @@ const SobreMim: React.FC = () => {
               <h2 className={styles.projectsh1}>Habilidades:</h2>
 
               <p className={styles.projectsp}>
-                NextJS, TypeScript, SCSS, CSS, HTML, ReactJS, JavaScript, Node.js
-                (Front-End)
+                NextJS, TypeScript, SCSS, CSS, HTML, ReactJS, JavaScript,
+                Node.js (Front-End)
               </p>
 
               <div className={styles.vejaMaisMenosContainer}>
@@ -151,15 +154,34 @@ const SobreMim: React.FC = () => {
             </div>
           )}
         </div>
-
-        <p className={styles.contato}>Telefone: (31) 986132070</p>
-        <p className={styles.contato}>E-mail: guilherme.gomes.ti1@gmail.com</p>
-        <p className={styles.contato}>
-          GitHub: https://github.com/GuilhermeGomesti1
-        </p>
-        <p className={styles.contato}>
-          LinkedIn: https://www.linkedin.com/in/guilherme-gomes-427321238
-        </p>
+        <ul className={styles.contato}>
+          <li>
+            <p>Telefone: (31) 986132070 <CopyIcon textToCopy={"31986132070"}/></p>
+          </li>
+          <li>
+            <a href="mailto:guilherme.gomes.ti1@gmail.com">
+              E-mail: guilherme.gomes.ti1@gmail.com <CopyIcon textToCopy={"guilherme.gomes.ti1@gmail.com"}/>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/GuilhermeGomesti1"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub: https://github.com/GuilhermeGomesti1 <CopyIcon textToCopy={"https://github.com/GuilhermeGomesti1"}/>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/guilherme-gomes-427321238"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn: https://www.linkedin.com/in/guilherme-gomes-427321238 <CopyIcon textToCopy={"https://www.linkedin.com/in/guilherme-gomes-427321238"} />
+            </a>
+          </li>
+        </ul>
       </div>
     </>
   );
