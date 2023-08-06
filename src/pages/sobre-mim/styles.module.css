@@ -20,7 +20,7 @@
 
 .projects {
   background-color: white;
-  
+  transition: height 0.5s ease; 
 
 }
 
@@ -104,6 +104,7 @@
 .vejaMaisMenosContainer {background-color: white;
   text-align: center;
   text-decoration: none;
+ 
 }
 .vejaMaisMenos {background-color: white;
   align-items: center;
@@ -112,7 +113,14 @@
   cursor: pointer;
   text-decoration: none;
   border-radius: 4px;
+  opacity: 1; 
+  transition: opacity 1s ease;
  
+}
+
+.vejaMaisMenosContainer.hide {
+ 
+  opacity: 0; /* Define a opacidade para 0 ao esconder */
 }
 
 .vejaMaisMenos:hover {

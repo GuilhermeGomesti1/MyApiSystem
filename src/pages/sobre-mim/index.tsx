@@ -4,6 +4,7 @@ import styles from "./styles.module.css";
 import Header from "@/components/header/header";
 import { PersonIcon } from "@/components/icons/iconsSobreMim/person";
 import Image from "next/image";
+import { ArrowDown } from "@/components/icons/iconsSobreMim/arrowdown";
 
 const SobreMim: React.FC = () => {
   const [showProjects, setShowProjects] = useState(false);
@@ -39,7 +40,6 @@ const SobreMim: React.FC = () => {
         </div>
 
         <p className={styles.descricao}>
-          {" "}
           <PersonIcon />
           Sou Guilherme Gomes, um desenvolvedor frontend apaixonado por
           programação e fascinado pelo poder de transformação da tecnologia.
@@ -61,8 +61,8 @@ const SobreMim: React.FC = () => {
           projeto foi entregue com sucesso ao cliente.
         </p>
 
-        <div className={styles.projects}>
-          <h1 className={styles.projectsh1}>Projetos Concluídos:</h1>
+        <div className={`${styles.projects} ${showProjects ? "" : styles.hide}`}>
+          <h1 className={styles.projectsh1}>Projetos Concluídos e Educação:</h1>
 
           <p className={styles.projectsh2}>Healthy-Life-Nutrition:</p>
           <p className={styles.projectsp}>
@@ -73,8 +73,6 @@ const SobreMim: React.FC = () => {
             autônoma. O site é responsivo e acessível em todos os dispositivos.
           </p>
 
-        
-
           <p className={styles.projectsh2}>Newsystem-Tickets:</p>
           <p className={styles.projectsp}>
             Desenvolvimento de uma aplicação com sistema de login completo,
@@ -83,8 +81,6 @@ const SobreMim: React.FC = () => {
             diferentes tipos de atendimentos, com elementos editáveis e
             responsivos para uma melhor experiência do usuário.
           </p>
-
-         
 
           <p className={styles.projectsh2}>Prime-Flix-Filmes:</p>
           <p className={styles.projectsp}>
@@ -97,61 +93,62 @@ const SobreMim: React.FC = () => {
 
           {showProjects ? (
             <>
-          <p className={styles.projectsh2}>APIREST:</p>
-          <p className={styles.projectsp}>
-            Desenvolvimento de uma API REST completa, com CRUD de usuários,
-            utilizando Node, Express, TypeScript e MongoDB. O deploy da
-            aplicação foi realizado no Railway. Durante o desenvolvimento, foram
-            aplicados princípios do SOLID, injeção de dependência e o uso do
-            Repository Pattern.
-          </p>
+              <p className={styles.projectsh2}>APIREST:</p>
+              <p className={styles.projectsp}>
+                Desenvolvimento de uma API REST completa, com CRUD de usuários,
+                utilizando Node, Express, TypeScript e MongoDB. O deploy da
+                aplicação foi realizado no Railway. Durante o desenvolvimento,
+                foram aplicados princípios do SOLID, injeção de dependência e o
+                uso do Repository Pattern.
+              </p>
 
-          <p className={styles.projectsh2}>Favorite-Bands:</p>
-          <p className={styles.projectsp}>
-            Desenvolvimento de uma página com sistema de login que permite aos
-            usuários selecionar um estilo musical dentre vários disponíveis e
-            adicionar sua banda favorita para o estilo escolhido. O site é
-            totalmente responsivo e se adapta a todos os dispositivos.
-          </p>
+              <p className={styles.projectsh2}>Favorite-Bands:</p>
+              <p className={styles.projectsp}>
+                Desenvolvimento de uma página com sistema de login que permite
+                aos usuários selecionar um estilo musical dentre vários
+                disponíveis e adicionar sua banda favorita para o estilo
+                escolhido. O site é totalmente responsivo e se adapta a todos os
+                dispositivos.
+              </p>
 
-          <h1 className={styles.projectsh1}>Educação:</h1>
+              <h1 className={styles.projectsh1}>Educação:</h1>
 
-          <p className={styles.projectsp}>
-            Análise e Desenvolvimento de Sistemas na UNIFCV - Centro
-            Universitário Cidade Verde (Cursando, EAD)
-          </p>
-          <p className={styles.projectsp}>
-            Cursos de HTML5 e CSS3, Curso JavaScript, ReactJS, TypeScript,
-            NextJS
-          </p>
+              <p className={styles.projectsp}>
+                Análise e Desenvolvimento de Sistemas na UNIFCV - Centro
+                Universitário Cidade Verde (Cursando, EAD)
+              </p>
+              <p className={styles.projectsp}>
+                Cursos de HTML5 e CSS3, Curso JavaScript, ReactJS, TypeScript,
+                NextJS
+              </p>
 
-          <h2 className={styles.projectsh1}>Habilidades:</h2>
+              <h2 className={styles.projectsh1}>Habilidades:</h2>
 
-          <p className={styles.projectsp}>
-            NextJS, TypeScript, SCSS, CSS, HTML, ReactJS, JavaScript, Node.js
-            (Front-End)
-          </p>
+              <p className={styles.projectsp}>
+                NextJS, TypeScript, SCSS, CSS, HTML, ReactJS, JavaScript, Node.js
+                (Front-End)
+              </p>
 
-          <div className={styles.vejaMaisMenosContainer}>
-        <button
-          className={styles.vejaMaisMenos}
-          onClick={handleShowLess}
-          style={{ color: "blue", cursor: "pointer" }}
-        >
-          Veja menos
-        </button>
-      </div>
-    </>
-  ) : (
-    <div className={styles.vejaMaisMenosContainer}>
-      <p
-        className={styles.vejaMaisMenos}
-        onClick={handleShowProjects}
-        style={{ color: "blue", cursor: "pointer" }}
-      >
-        Veja mais
-      </p>
-    </div>
+              <div className={styles.vejaMaisMenosContainer}>
+                <button
+                  className={styles.vejaMaisMenos}
+                  onClick={handleShowLess}
+                  style={{ color: "blue", cursor: "pointer" }}
+                >
+                  Veja menos
+                </button>
+              </div>
+            </>
+          ) : (
+            <div className={styles.vejaMaisMenosContainer}>
+              <p
+                className={styles.vejaMaisMenos}
+                onClick={handleShowProjects}
+                style={{ color: "blue", cursor: "pointer" }}
+              >
+                Veja mais <ArrowDown />
+              </p>
+            </div>
           )}
         </div>
 
