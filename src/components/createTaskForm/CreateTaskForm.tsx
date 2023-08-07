@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import styles from "./styles.module.css";
 import TaskList from "../taskList/TaskList";
 import { Task } from "@/types";
-
+import { CloseIcon } from "../icons/iconsTasks/closeIcon";
 type Description = string;
 type Title = string;
 
@@ -21,38 +21,37 @@ export default function CreateTaskForm() {
   const [taskToEdit, setTaskToEdit] = useState<Task | null>(null);
   const router = useRouter();
 
- 
-    // Função para carregar as tarefas do usuário após o login
-    const loadTasks = async () => {
-      const token = localStorage.getItem("token");
-      const userId = localStorage.getItem("userId");
+  // Função para carregar as tarefas do usuário após o login
+  const loadTasks = async () => {
+    const token = localStorage.getItem("token");
+    const userId = localStorage.getItem("userId");
 
-      if (token && userId) {
-        try {
-          const tasksResponse = await fetch(
-            `http://localhost:8000/users/${userId}/tasks`,
-            {
-              method: "GET",
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          );
-
-          if (tasksResponse.ok) {
-            const tasksData = await tasksResponse.json();
-            setTasks(tasksData);
-          } else {
-            throw new Error("Erro ao obter lista de tarefas do usuário.");
+    if (token && userId) {
+      try {
+        const tasksResponse = await fetch(
+          `http://localhost:8000/users/${userId}/tasks`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           }
-        } catch (err) {
-          console.error("Erro ao carregar lista de tarefas:", err);
+        );
+
+        if (tasksResponse.ok) {
+          const tasksData = await tasksResponse.json();
+          setTasks(tasksData);
+        } else {
+          throw new Error("Erro ao obter lista de tarefas do usuário.");
         }
+      } catch (err) {
+        console.error("Erro ao carregar lista de tarefas:", err);
       }
-      setUserId(userId || null);
-      setLoading(false);
-    };
-    useEffect(() => {
+    }
+    setUserId(userId || null);
+    setLoading(false);
+  };
+  useEffect(() => {
     loadTasks();
   }, []);
 
@@ -76,6 +75,7 @@ export default function CreateTaskForm() {
   const handleCloseCreateTaskModal = () => {
     setIsCreateTaskModalOpen(false);
     setIsFormSubmitted(false);
+    setIsEditModalOpen(false);
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -91,52 +91,54 @@ export default function CreateTaskForm() {
       return;
     }
 
-    
-  try {
-    if (taskToEdit) { // Verifique se há uma tarefa para editar
-      const response = await fetch(
-        `http://localhost:8000/tasks/${taskToEdit._id}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({ title, description }) , 
-        }  
-      );
-     
-      if (response.ok) {
-        console.log(`Tarefa com ID ${taskToEdit._id} editada com sucesso!`);
-        setTasks((tarefasAntigas) =>
-        tarefasAntigas.map((tarefa) =>
-          tarefa._id === taskToEdit._id ? { ...tarefa, title, description } : tarefa
-        )
-      );
-        setTaskToEdit(null); // Redefina taskToEdit após a atualização bem-sucedida
-        setIsEditModalOpen(false);
-      
-        // Atualizar a lista de tarefas após a edição
-        const tasksResponse = await fetch(
-          `http://localhost:8000/users/${userId}/tasks`,
+    try {
+      if (taskToEdit) {
+        // Verifique se há uma tarefa para editar
+        const response = await fetch(
+          `http://localhost:8000/tasks/${taskToEdit._id}`,
           {
-            method: "GET",
+            method: "PUT",
             headers: {
+              "Content-Type": "application/json",
               Authorization: `Bearer ${token}`,
             },
+            body: JSON.stringify({ title, description }),
           }
         );
 
-        if (tasksResponse.ok) {
-          const tasksData = await tasksResponse.json();
-          setTasks(tasksData);
-          await loadTasks();
+        if (response.ok) {
+          console.log(`Tarefa com ID ${taskToEdit._id} editada com sucesso!`);
+          setTasks((tarefasAntigas) =>
+            tarefasAntigas.map((tarefa) =>
+              tarefa._id === taskToEdit._id
+                ? { ...tarefa, title, description }
+                : tarefa
+            )
+          );
+          setTaskToEdit(null); // Redefina taskToEdit após a atualização bem-sucedida
+          setIsEditModalOpen(false);
+
+          // Atualizar a lista de tarefas após a edição
+          const tasksResponse = await fetch(
+            `http://localhost:8000/users/${userId}/tasks`,
+            {
+              method: "GET",
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+
+          if (tasksResponse.ok) {
+            const tasksData = await tasksResponse.json();
+            setTasks(tasksData);
+            await loadTasks();
+          } else {
+            throw new Error("Erro ao obter lista de tarefas do usuário.");
+          }
         } else {
-          throw new Error("Erro ao obter lista de tarefas do usuário.");
+          throw new Error("Erro ao editar tarefa");
         }
-      } else {
-        throw new Error("Erro ao editar tarefa");
-      }
       } else {
         // Código de criação de tarefa (já existente no seu código atual)
         const response = await fetch(`http://localhost:8000/${userId}/tasks`, {
@@ -167,7 +169,6 @@ export default function CreateTaskForm() {
             const tasksData = await tasksResponse.json();
             setTasks(tasksData);
             setIsCreateTaskModalOpen(false);
-            
           }
         } else {
           throw new Error("Erro ao criar tarefa");
@@ -236,7 +237,7 @@ export default function CreateTaskForm() {
     setTaskToEdit(task);
     setTitle(task.title);
     setDescription(task.description);
-   
+
     setIsEditModalOpen(true);
     setIsCreateTaskModalOpen(false);
   };
@@ -256,10 +257,10 @@ export default function CreateTaskForm() {
         <div className={styles.modal}>
           <div className={styles.formContainer}>
             <h1 className={styles.formTitle}>
-              {isEditing ? "Edit Task" : "Create and Manage Your Tasks"}
+              {isEditing ? "Edit Task" : "Create Your Tasks"}
             </h1>
-            <form onSubmit={handleSubmit}>
-              <div>
+            <form onSubmit={handleSubmit} className={styles.formall}>
+              <div className={styles.divForm}>
                 <label className={styles.formLabel}>Title:</label>
                 <input
                   type="text"
@@ -269,7 +270,7 @@ export default function CreateTaskForm() {
                   className={styles.formInput}
                 />
               </div>
-              <div>
+              <div className={styles.divForm}>
                 <label className={styles.formLabeld}>Description:</label>
                 <input
                   type="text"
@@ -283,6 +284,14 @@ export default function CreateTaskForm() {
                 {isEditing ? "Update Task" : "Create Task"}
               </button>
             </form>
+            <button
+              type="button"
+              onClick={handleCloseCreateTaskModal}
+              className={`${styles.formButton} ${styles.buttonModalPosition} ${styles.closeButton}`}
+            >
+              {" "}
+              <CloseIcon />
+            </button>
           </div>
         </div>
       )}
@@ -292,7 +301,7 @@ export default function CreateTaskForm() {
         <button
           type="button"
           onClick={handleOpenCreateTaskModal}
-          className={styles.formButton}
+          className={`${styles.formButton} ${styles.buttonInitialPosition}`}
         >
           Create Task
         </button>
@@ -312,7 +321,7 @@ export default function CreateTaskForm() {
         <div className={styles.modal}>
           <div className={styles.formContainer}>
             <h1 className={styles.formTitle}>Edit Task</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className={styles.formall}>
               <div>
                 <label className={styles.formLabel}>Title:</label>
                 <input
@@ -337,6 +346,13 @@ export default function CreateTaskForm() {
                 Update Task
               </button>
             </form>
+            <button
+              type="button"
+              onClick={handleCloseCreateTaskModal}
+              className={`${styles.formButton} ${styles.buttonModalPosition} ${styles.closeButton}`}
+            >
+              <CloseIcon />
+            </button>
           </div>
         </div>
       )}
