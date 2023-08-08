@@ -43,7 +43,7 @@ export default function LoginForm() {
     e.preventDefault();
 
     try {
-      const response = await fetch("hhttps://apinode1.onrender.com/signin", {
+      const response = await fetch("https://apinode1.onrender.com/signin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
