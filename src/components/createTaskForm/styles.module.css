@@ -80,6 +80,8 @@
   box-sizing: border-box;
   padding: 8px;
   border: none;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .formInputd {
@@ -96,6 +98,8 @@
   max-height: 300px;
   text-align: initial;
   margin-bottom: 20px;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
 }
 
 /* Estilo para o botão de enviar */

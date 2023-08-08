@@ -245,7 +245,7 @@ export default function CreateTaskForm() {
   return (
     <div className={styles.container}>
       {/* Div to darken the background */}
-      {isCreateTaskModalOpen && !isFormSubmitted && (
+      {(isCreateTaskModalOpen || isEditModalOpen) && !isFormSubmitted && (
         <div
           className={styles.modalBackdrop}
           onClick={handleCloseCreateTaskModal}
@@ -278,6 +278,7 @@ export default function CreateTaskForm() {
                   onChange={handleDescriptionChange}
                   required
                   className={styles.formInputd}
+                 
                 />
               </div>
               <button type="submit" className={styles.formButton}>
@@ -322,7 +323,7 @@ export default function CreateTaskForm() {
           <div className={styles.formContainer}>
             <h1 className={styles.formTitle}>Edit Task</h1>
             <form onSubmit={handleSubmit} className={styles.formall}>
-              <div>
+              <div className={styles.divForm}>
                 <label className={styles.formLabel}>Title:</label>
                 <input
                   type="text"
@@ -332,7 +333,7 @@ export default function CreateTaskForm() {
                   className={styles.formInput}
                 />
               </div>
-              <div>
+              <div className={styles.divForm}>
                 <label className={styles.formLabeld}>Description:</label>
                 <input
                   type="text"
