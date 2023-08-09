@@ -195,7 +195,7 @@ export default function CreateTaskForm() {
     }
 
     try {
-      const response = await fetch(`https://apinode-production-734f.up.railway.app/users/${_id}`, {
+      const response = await fetch(`https://apinode-production-734f.up.railway.app/tasks/${_id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
