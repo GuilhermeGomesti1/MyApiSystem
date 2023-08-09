@@ -20,7 +20,7 @@ export default function LoginForm() {
   const loadUserTasks = async (userId: string, token: string): Promise<Task[]> => {
     try {
       const tasksResponse = await fetch(
-        `http://localhost:8000/users/${userId}/tasks`,
+        `https://apinode-production-734f.up.railway.app/users/${userId}/tasks`,
         {
           method: "GET",
           headers: {
@@ -43,15 +43,16 @@ export default function LoginForm() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:8000/signin", {
+      const response = await fetch("https://apinode-production-734f.up.railway.app/signin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ email, password }),
       });
+
       if (response.ok) {
-        const responseData = await response.json(); // Aguardar a resposta antes de acessar o responseData
+        const responseData = await response.json();
         console.log("Resposta do Backend:", responseData);
 
         const { token, id } = responseData;
@@ -62,15 +63,15 @@ export default function LoginForm() {
           throw new Error("UserId not present in the response after login.");
         }
 
-        localStorage.setItem("token", token); // Armazena o token no LocalStorage
+        localStorage.setItem("token", token);
         localStorage.setItem("userId", userIdValue);
-        console.log("Token armazenado no localStorage:", token); // Armazena o ID do usuário no LocalStorage
-        console.log("userId após o login:", userIdValue); 
+        console.log("Token armazenado no localStorage:", token);
+        console.log("userId após o login:", userIdValue);
 
-        const tasksData = await loadUserTasks(userIdValue,token);
+        const tasksData = await loadUserTasks(userIdValue, token);
 
-        router.push("/tasks"); 
-        setTasks(tasksData);// Redireciona para a página de tarefas após o login bem-sucedido
+        router.push("/tasks");
+        setTasks(tasksData);
       } else {
         throw new Error("Erro ao fazer login");
       }
