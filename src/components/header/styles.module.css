@@ -80,3 +80,29 @@
   background-color: #ffffff;
 
 }
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.5rem;
+  }
+
+  .logo {
+    margin-bottom: 0.5rem;
+  }
+
+  .headerh2 {
+    margin: 0;
+    padding-top: 0.5rem;
+  }
+
+  .navList {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navItem {
+    margin: 0.5rem 0;
+  }
+}
