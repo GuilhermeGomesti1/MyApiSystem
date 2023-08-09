@@ -29,7 +29,7 @@ export default function CreateTaskForm() {
     if (token && userId) {
       try {
         const tasksResponse = await fetch(
-          `http://localhost:8000/users/${userId}/tasks`,
+          `https://apinode-production-734f.up.railway.app/users/${userId}/tasks`,
           {
             method: "GET",
             headers: {
@@ -95,7 +95,7 @@ export default function CreateTaskForm() {
       if (taskToEdit) {
         // Verifique se há uma tarefa para editar
         const response = await fetch(
-          `http://localhost:8000/tasks/${taskToEdit._id}`,
+          `https://apinode-production-734f.up.railway.app/tasks/${taskToEdit._id}`,
           {
             method: "PUT",
             headers: {
@@ -120,7 +120,7 @@ export default function CreateTaskForm() {
 
           // Atualizar a lista de tarefas após a edição
           const tasksResponse = await fetch(
-            `http://localhost:8000/users/${userId}/tasks`,
+            `https://apinode-production-734f.up.railway.app/users/${userId}/tasks`,
             {
               method: "GET",
               headers: {
@@ -141,7 +141,7 @@ export default function CreateTaskForm() {
         }
       } else {
         // Código de criação de tarefa (já existente no seu código atual)
-        const response = await fetch(`http://localhost:8000/${userId}/tasks`, {
+        const response = await fetch(`https://apinode-production-734f.up.railway.app/${userId}/tasks`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -156,7 +156,7 @@ export default function CreateTaskForm() {
           router.push("/tasks");
 
           const tasksResponse = await fetch(
-            `http://localhost:8000/users/${userId}/tasks`,
+            `https://apinode-production-734f.up.railway.app/users/${userId}/tasks`,
             {
               method: "GET",
               headers: {
@@ -195,7 +195,7 @@ export default function CreateTaskForm() {
     }
 
     try {
-      const response = await fetch(`http://localhost:8000/tasks/${_id}`, {
+      const response = await fetch(`https://apinode-production-734f.up.railway.app/users/${_id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -207,7 +207,7 @@ export default function CreateTaskForm() {
 
         // Atualizar a lista de tarefas após a exclusão
         const updatedTasksResponse = await fetch(
-          `http://localhost:8000/users/${userId}/tasks`,
+          `https://apinode-production-734f.up.railway.app/users/${userId}/tasks`,
           {
             method: "GET",
             headers: {
