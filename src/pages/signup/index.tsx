@@ -15,7 +15,7 @@ export default function Signup() {
     e.preventDefault();
 
     // Fazer uma chamada de API para criar o usuário usando os dados fornecidos
-    const response = await fetch("http://localhost:8000/users", {
+    const response = await fetch("https://apinode-production-734f.up.railway.app/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -33,7 +33,7 @@ export default function Signup() {
 
       // Criar a tarefa para o usuário recém-criado
       const taskResponse = await fetch(
-        `http://localhost:8000/${userId}/tasks`,
+        `https://apinode-production-734f.up.railway.app/${userId}/tasks`,
         {
           method: "POST",
           headers: {

@@ -14,7 +14,7 @@ const UserTasks = ({ userId }: { userId: string }) => {
     // Função para buscar as tarefas do usuário a partir do backend
     const fetchUserTasks = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/${userId}/tasks`);
+        const response = await fetch(`https://apinode-production-734f.up.railway.app/${userId}/tasks`);
         if (response.ok) {
           const tasksData = await response.json();
           setTasks(tasksData);
