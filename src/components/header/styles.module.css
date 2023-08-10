@@ -85,21 +85,22 @@
   .header {
     flex-direction: row; 
     padding: 1rem; 
+    margin-bottom: 2rem;
   }
 
   .logo {
-    width: 20px; /* Tornando o logo um pouco menor */
-    height: 20px;
+    width: 15px; /* Tornando o logo um pouco menor */
+    height: 15px;
   }
 
   .headerh2 {
-    font-size: 12px; /* Tornando o texto do cabeçalho um pouco menor */
-    padding-top: 5px;
+    font-size: 8px; /* Tornando o texto do cabeçalho um pouco menor */
+    padding-top: 4px;
   }
 
   .navList {
     margin-left: auto; /* Movendo a lista de navegação para a direita */
-    font-size: 12px;
+    font-size: 8px;
   }
 
   .navItem {
@@ -109,6 +110,6 @@
   .homeIcon,
   .sobreMimIcon,
   .sobreProjeto {
-    font-size: 16px; /* Tornando os ícones um pouco menores */
+    font-size: 10px; /* Tornando os ícones um pouco menores */
   }
 }
