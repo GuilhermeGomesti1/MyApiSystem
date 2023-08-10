@@ -71,9 +71,11 @@
   }
 
   .image {
+    width: 280px;
     margin-top: -60px;
     max-width: 85%;
     max-height: 30vh;
+    margin-bottom: 2rem;
   }
 
   .formContainer {
