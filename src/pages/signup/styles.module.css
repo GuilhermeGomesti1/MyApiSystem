@@ -19,7 +19,7 @@
     margin-bottom: 12px;
     height: 36px;
     border-radius: 4px;
-    background-color: #68d1df4f;
+    background-color: #68d1df38;
     font-size: 16px;
     
     width: 100%;
@@ -78,4 +78,20 @@ text-decoration: none;
   font-size: 30px;
   color: #28b4e9;
   padding-top: 50px;
+}
+
+@media (max-width: 768px){
+
+  
+  .signup-form {
+    max-width: 300px;
+    padding: 15px;
+  }
+  .signUpTitle{margin-top: -4rem;
+    font-size: 1.2em;
+  }
+  .gotologin{
+    font-size: 10px;
+    margin-bottom: -2em;
+  }
 }

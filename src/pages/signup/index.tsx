@@ -2,6 +2,7 @@ import { useState, FormEvent } from "react";
 import { useRouter } from "next/router";
 import styles from "./styles.module.css";
 import Header from "@/components/header/header";
+import Footer from "@/components/footer/footer";
 
 export default function Signup() {
   const router = useRouter();
@@ -15,13 +16,16 @@ export default function Signup() {
     e.preventDefault();
 
     // Fazer uma chamada de API para criar o usuário usando os dados fornecidos
-    const response = await fetch("https://apinode-production-734f.up.railway.app/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ firstName, lastName, email, password }),
-    });
+    const response = await fetch(
+      "https://apinode-production-734f.up.railway.app/users",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ firstName, lastName, email, password }),
+      }
+    );
 
     if (response.ok) {
       // Usuário criado com sucesso
@@ -64,60 +68,65 @@ export default function Signup() {
   return (
     <div>
       <Header />
+      <div className={styles.container}>
+        <h1 className={styles.signUpTitle}>CADASTRE-SE PARA TER ACESSO</h1>
+        <form className={styles["signup-form"]} onSubmit={handleSubmit}>
+          <div className={styles.divInput}>
+            <label className={styles.divInput}>First Name:</label>
+            <input
+              type="text"
+              placeholder="First Name"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              className={styles["signup-input"]}
+            />
+          </div>
 
-      <h1 className={styles.signUpTitle}>CADASTRE-SE PARA TER ACESSO</h1>
-      <form className={styles["signup-form"]} onSubmit={handleSubmit}>
-        <div className={styles.divInput}>
-        <label className={styles.divInput}>First Name:</label>
-          <input
-            type="text"
-            placeholder="First Name"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            className={styles["signup-input"]}
-          />
-        </div>
+          <div className={styles.divInput}>
+            <label className={styles.divInput}>Last Name:</label>
+            <input
+              type="text"
+              placeholder="Last Name"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              className={styles["signup-input"]}
+            />{" "}
+          </div>
 
-        <div className={styles.divInput}>
-        <label className={styles.divInput}>Last Name:</label>
-          <input
-            type="text"
-            placeholder="Last Name"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-            className={styles["signup-input"]}
-          />{" "}
-        </div>
-
-        <div className={styles.divInput}>
-        <label className={styles.divInput}>Email:</label>
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className={styles["signup-input"]}
-          />
-        </div>
-        <div className={styles.divInput}>
-        <label className={styles.divInput}>Password:</label>
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className={styles["signup-input"]}
-          />{" "}
-        </div>
-        <button type="submit" className={styles["signup-button"]}>
-          Signup
-        </button>
-      </form>
-      <a href="/" className={styles.aGoToLogin}>
-        <h2 className={styles.gotologin}>
-          Já possui uma conta? faça o login e administre suas tarefas.
-        </h2>
-      </a>
+          <div className={styles.divInput}>
+            <label className={styles.divInput}>Email:</label>
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className={styles["signup-input"]}
+            />
+          </div>
+          <div className={styles.divInput}>
+            <label className={styles.divInput}>Password:</label>
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className={styles["signup-input"]}
+            />{" "}
+          </div>
+          <button type="submit" className={styles["signup-button"]}>
+            Signup
+          </button>
+        </form>
+        <a href="/" className={styles.aGoToLogin}>
+          <h2 className={styles.gotologin}>
+            Já possui uma conta? faça o login e administre suas tarefas.
+          </h2>
+        </a>
+        
+      </div>
+      
     </div>
+    
   );
+  
 }
