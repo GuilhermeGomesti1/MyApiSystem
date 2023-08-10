@@ -43,9 +43,10 @@
 
 .lista {
   color: white;
-  text-align: center;
-  list-style: none;
+  text-align: initial;
+  
   margin-left: 20px;
+  margin-right: 20px;
 }
 
 .lista-item {
