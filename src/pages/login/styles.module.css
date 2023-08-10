@@ -73,15 +73,17 @@
     .loginForm {
       padding: 20px; /* Reduzindo o padding para economizar espaço */
       margin: 10px;
+      margin-top: -5px;
     }
   
     .welcome {
-      font-size: 32px; /* Reduzindo o tamanho da fonte */
-      margin-bottom: 4px; /* Reduzindo a margem inferior */
+      font-size: 25px; /* Reduzindo o tamanho da fonte */
+      margin-bottom: 4px; 
     }
   
     .span {
-      margin-bottom: 10px; /* Reduzindo a margem inferior */
+      margin-bottom: 10px; 
+      font-size: 12px;
     }
   
     .loginInput {
@@ -96,6 +98,7 @@
     }
   
     .login-button {
+      margin-top: 8px;
       padding: 8px; /* Reduzindo o padding */
       font-size: 14px; /* Reduzindo o tamanho da fonte */
     }}

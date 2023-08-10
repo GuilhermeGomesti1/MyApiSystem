@@ -73,22 +73,25 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 85vh;
   }
 
-  .image{
+  .image{margin-top: -60px;
     max-width: 85%;
-    margin-right: 0;
     max-height: 30vh;
   }
 
   .formContainer{
     max-width: 70%;
-    
-    margin-bottom: 20px;
+    margin-bottom: -25px;
+   
   }
 
   .textHome{display: none;
   }
-  
+  .buttonSignUp{
+    font-size: 13px;
+    font-weight: bold;
+    
+  }
 }
