@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { Task } from "@/types";
 import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.min.css';
+
 
 
 export default function LoginForm() {
@@ -10,7 +12,7 @@ export default function LoginForm() {
   const [password, setPassword] = useState("");
   const [tasks, setTasks] = useState<Task[]>([]);
   const router = useRouter();
-  
+
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   };
@@ -19,7 +21,10 @@ export default function LoginForm() {
     setPassword(e.target.value);
   };
 
-  const loadUserTasks = async (userId: string, token: string): Promise<Task[]> => {
+  const loadUserTasks = async (
+    userId: string,
+    token: string
+  ): Promise<Task[]> => {
     try {
       const tasksResponse = await fetch(
         `https://apinode-production-734f.up.railway.app/users/${userId}/tasks`,
@@ -45,13 +50,16 @@ export default function LoginForm() {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://apinode-production-734f.up.railway.app/signin", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
+      const response = await fetch(
+        "https://apinode-production-734f.up.railway.app/signin",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+        }
+      );
 
       if (response.ok) {
         const responseData = await response.json();
@@ -71,25 +79,18 @@ export default function LoginForm() {
         console.log("userId após o login:", userIdValue);
 
         const tasksData = await loadUserTasks(userIdValue, token);
-        toast.success('Bem vindo de volta!')
 
+        toast.success("Bem vindo(a) de volta");
         router.push("/tasks");
-      
-
-        
 
         setTasks(tasksData);
-
-
-
-
-        
       } else {
         throw new Error("Erro ao fazer login");
       }
     } catch (err) {
-      console.error("Erro ao fazer login:", err);
-      alert("Erro ao fazer login. Verifique o console para mais detalhes.");
+      console.error(err);
+      toast.error("Erro ao fazer login!");
+     
     } finally {
       setEmail("");
       setPassword("");
@@ -98,8 +99,8 @@ export default function LoginForm() {
 
   return (
     <form className={styles.loginForm} onSubmit={handleSubmit}>
-       <h1 className={styles.welcome}>Acesso ao Painel</h1>
-        <span className={styles.span}>Gerencie suas tarefas de forma fácil.</span>
+      <h1 className={styles.welcome}>Acesso ao Painel</h1>
+      <span className={styles.span}>Gerencie suas tarefas de forma fácil.</span>
       <div className={styles.divInput}>
         <label className={styles.divInput}>Email:</label>
         <input
@@ -113,7 +114,9 @@ export default function LoginForm() {
         />
       </div>
       <div className={styles.divInput}>
-        <label htmlFor="password" className={styles.divInput}>Senha:</label>
+        <label htmlFor="password" className={styles.divInput}>
+          Senha:
+        </label>
         <input
           type="password"
           id="password"

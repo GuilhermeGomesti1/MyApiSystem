@@ -73,7 +73,7 @@
     .loginForm {
       padding: 20px; /* Reduzindo o padding para economizar espaço */
       margin: 10px;
-      margin-top: -5px;
+      margin-top: -5;
     }
   
     .welcome {
