@@ -65,8 +65,12 @@
 
 
 @media screen and (max-width: 768px){
+
+  .container{
+    margin-top: -4rem;
+  }
   .image{
-    width: 250px;
+    width: 280px;
     
   }
 }
