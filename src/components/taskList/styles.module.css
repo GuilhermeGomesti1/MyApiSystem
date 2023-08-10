@@ -118,14 +118,14 @@
 }
 @media (max-width: 768px) {
   .modal {
-    max-width: 90%;
+    max-width: 100%;
     top: 10%;
     left: 5px;
     right: 5px;
   }
 
   .formContainer {
-    width: 90%;
+    width: 100%;
     padding: 10px;
     margin: 0 auto;
   }
