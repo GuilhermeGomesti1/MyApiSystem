@@ -83,28 +83,31 @@
 
 @media (max-width: 768px) {
   .header {
-    flex-direction: column;
-    align-items: center; 
-    padding: 0.5rem;
+    flex-direction: row; 
+    padding: 0.5rem; /* Reduzindo o padding para economizar espaço */
   }
 
-  .logo { width: 30px; 
+  .logo {
+    width: 30px; /* Tornando o logo um pouco menor */
     height: 30px;
-    margin-bottom: 1rem; 
   }
 
   .headerh2 {
-    font-size: 1.2rem;
-    margin: 0;
-    padding-top: 0.5rem;
+    font-size: 16px; /* Tornando o texto do cabeçalho um pouco menor */
+    padding-top: 5px;
   }
 
   .navList {
-    text-align: center;
+    margin-left: auto; /* Movendo a lista de navegação para a direita */
   }
 
   .navItem {
-    margin: 0.5rem 0;
-    font-size: 0.9rem; 
+    margin: 0 0.5rem; /* Reduzindo a margem dos itens de navegação */
+  }
+
+  .homeIcon,
+  .sobreMimIcon,
+  .sobreProjeto {
+    font-size: 16px; /* Tornando os ícones um pouco menores */
   }
 }
