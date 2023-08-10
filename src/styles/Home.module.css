@@ -69,30 +69,27 @@
 
 @media (max-width: 768px) {
  
-  .main {  
-    
+  .main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
+    height: 100vh;
   }
 
   .image{
-  
-    max-width: 30%;
-    
+    max-width: 20%;
+
   }
 
   .formContainer{
+    max-width: 70%;
     
-    max-width: 60%;
-    max-height: 20%;
-  
+    margin-bottom: 20px;
   }
 
   .textHome{padding-bottom: 2rem;
-    margin-top: -8rem;
-    font-size: 1.2em;
+    padding-top: 2rem;
+    font-size: 1em;
   }
   
 }

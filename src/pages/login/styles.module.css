@@ -68,34 +68,34 @@
     transition: background-color 1s ease;
   }
   
-@media (max-width: 768px) {
-  .loginForm {
-    padding: 10px; /* Reduzindo o padding para economizar espaço */
-    margin: 5px;
-  }
 
-  .welcome {
-    font-size: 32px; /* Reduzindo o tamanho da fonte */
-    margin-bottom: 4px; /* Reduzindo a margem inferior */
-  }
-
-  .span {
-    margin-bottom: 8px; /* Reduzindo a margem inferior */
-  }
-
-  .loginInput {
-    height: 20px; /* Reduzindo a altura do input */
-    font-size: 10px; /* Reduzindo o tamanho da fonte */
-    margin-bottom: 8px; /* Reduzindo a margem inferior */
-  }
-
-  .login-input::placeholder {
-    height: 25px;
-    font-size: 12px;
-  }
-
-  .login-button {
-    padding: 6px; /* Reduzindo o padding */
-    font-size: 12px; /* Reduzindo o tamanho da fonte */
-  }
-}
+  @media (max-width: 768px) {
+    .loginForm {
+      padding: 20px; /* Reduzindo o padding para economizar espaço */
+      margin: 10px;
+    }
+  
+    .welcome {
+      font-size: 32px; /* Reduzindo o tamanho da fonte */
+      margin-bottom: 4px; /* Reduzindo a margem inferior */
+    }
+  
+    .span {
+      margin-bottom: 10px; /* Reduzindo a margem inferior */
+    }
+  
+    .loginInput {
+      height: 30px; /* Reduzindo a altura do input */
+      font-size: 14px; /* Reduzindo o tamanho da fonte */
+      margin-bottom: 8px; /* Reduzindo a margem inferior */
+    }
+  
+    .login-input::placeholder {
+      height: 30px;
+      font-size: 14px;
+    }
+  
+    .login-button {
+      padding: 8px; /* Reduzindo o padding */
+      font-size: 14px; /* Reduzindo o tamanho da fonte */
+    }}
