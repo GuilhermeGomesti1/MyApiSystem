@@ -2,6 +2,7 @@ import styles from "./styles.module.css";
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { Task } from "@/types";
+import { toast } from "react-toastify";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
@@ -71,7 +72,18 @@ export default function LoginForm() {
         const tasksData = await loadUserTasks(userIdValue, token);
 
         router.push("/tasks");
+
+        toast.success("Bem vindo de volta!", {
+          position: "top-right",
+          autoClose: 3000, // Duração em milissegundos
+        });
+
         setTasks(tasksData);
+
+
+
+
+        
       } else {
         throw new Error("Erro ao fazer login");
       }

@@ -4,6 +4,8 @@ import styles from "./styles.module.css";
 import TaskList from "../taskList/TaskList";
 import { Task } from "@/types";
 import { CloseIcon } from "../icons/iconsTasks/closeIcon";
+import { toast } from 'react-toastify';
+
 type Description = string;
 type Title = string;
 
