@@ -116,15 +116,99 @@
   align-items: center;
   margin-top: 10px;
 }
-
 @media (max-width: 768px) {
-  .taskListContainer {
+  .modal {
+    max-width: 90%;
+    top: 10%;
+    left: 5px;
+    right: 5px;
+  }
+
+  .formContainer {
     width: 90%;
+    padding: 10px;
+    margin: 0 auto;
+  }
+
+  .formTitle {
+    font-size: 24px;
+    padding-bottom: 10px;
+  }
+
+  .formLabel,
+  .formLabeld {
+    font-size: 14px;
     padding: 5px;
   }
 
+  .formInput,
+  .formInputd {
+    font-size: 14px;
+    padding: 6px;
+  }
+
+  .formInputd {
+    height: 80px;
+  }
+
+  .formButton {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .divList {
+    width: 90%;
+    padding: 10px;
+    margin: 10px auto;
+  }
+
+  .buttonInitialPosition,
+  .buttonModalPosition {
+    top: 10px;
+    right: 10px;
+  }
+
+  .taskListContainer {
+    width: 90%;
+    margin: 20px auto;
+    padding: 10px;
+  }
+
   .taskItem {
-    flex-basis: 100%;
-    margin-right: 0;
+    flex-basis: calc(50% - 10px); /* Dois itens por linha com espaçamento */
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+
+  .listTitle {
+    font-size: 30px;
+  }
+
+  .titleTask {
+    font-size: 18px;
+  }
+
+  .title {
+    padding: 15px;
+    font-size: 20px;
+  }
+
+  .description {
+    padding: 15px;
+  }
+
+  .taskNumber {
+    font-size: 14px;
+    padding: 2px 6px;
+  }
+
+  .buttonEditTask,
+  .buttonDeleteTask {
+    padding: 4px 8px;
+    font-size: 14px;
+  }
+
+  .buttonGroup {
+    margin-top: 8px;
   }
 }
