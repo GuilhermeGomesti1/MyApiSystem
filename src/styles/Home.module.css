@@ -77,8 +77,8 @@
   }
 
   .image{
-    max-width: 20%;
-
+    max-width: 85%;
+    margin-right: 0;
   }
 
   .formContainer{
@@ -87,9 +87,7 @@
     margin-bottom: 20px;
   }
 
-  .textHome{padding-bottom: 2rem;
-    padding-top: 2rem;
-    font-size: 1em;
+  .textHome{display: none;
   }
   
 }
