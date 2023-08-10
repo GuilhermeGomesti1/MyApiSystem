@@ -1,35 +1,34 @@
-.allContent{
+.allContent {
   height: 100%;
   margin: 0;
   padding: 0;
   height: 100vh;
 }
 
-.main { 
+.main {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content:space-around ;
+  justify-content: space-around;
   height: 85vh;
   width: 100%;
-  background-color: #130D20;
+  background-color: #130d20;
   color: white;
 }
 
-.image{
+.image {
   flex: 1;
-
-
 }
-.titleAndImage{display: flex;
+.titleAndImage {
+  display: flex;
   flex-direction: column;
   align-items: center;
-  
+
   text-align: center;
-  
 }
-.textHome{padding-bottom: 2rem;
-  
+.textHome {
+  padding-bottom: 2rem;
+
   font-size: 2em;
 }
 
@@ -38,13 +37,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 2rem; 
+  margin-top: 2rem;
 }
 
 .buttonSignUp {
-
- 
-  background-color: #130D20;
+  background-color: #130d20;
   color: white;
   border: none;
   border-radius: 5px;
@@ -57,7 +54,6 @@
 .buttonSignUp:hover {
   color: #64b7cc;
   /* Adicione uma transição suave para a mudança de cor */
-
 }
 
 /* Estilo do botão de signup quando desabilitado */
@@ -66,32 +62,30 @@
   cursor: not-allowed;
 }
 
-
 @media (max-width: 768px) {
- 
   .main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 85vh;
+    height: 75vh;
   }
 
-  .image{margin-top: -60px;
+  .image {
+    margin-top: -60px;
     max-width: 85%;
     max-height: 30vh;
   }
 
-  .formContainer{
+  .formContainer {
     max-width: 70%;
     margin-bottom: -25px;
-   
   }
 
-  .textHome{display: none;
+  .textHome {
+    display: none;
   }
-  .buttonSignUp{
-    font-size: 13px;
+  .buttonSignUp {
+    font-size: 10px;
     font-weight: bold;
-    
   }
 }
