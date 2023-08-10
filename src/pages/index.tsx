@@ -5,7 +5,8 @@ import LoginForm from "./login";
 import Link from "next/link";
 import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer";
-
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 export default function Home() {
   return (
     <>
@@ -33,9 +34,11 @@ export default function Home() {
               </button>
             </Link>
           </div>
+          <ToastContainer/>
         </main>
         <Footer />
       </div>
+     
     </>
   );
 }

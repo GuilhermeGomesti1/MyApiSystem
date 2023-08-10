@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { Task } from "@/types";
 import { toast } from "react-toastify";
 
+
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -70,13 +71,12 @@ export default function LoginForm() {
         console.log("userId após o login:", userIdValue);
 
         const tasksData = await loadUserTasks(userIdValue, token);
+        toast.success('Bem vindo de volta!')
 
         router.push("/tasks");
+      
 
-        toast.success("Bem vindo de volta!", {
-          position: "top-right",
-          autoClose: 3000, // Duração em milissegundos
-        });
+        
 
         setTasks(tasksData);
 
