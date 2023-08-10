@@ -84,25 +84,27 @@
 @media (max-width: 768px) {
   .header {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center; 
     padding: 0.5rem;
   }
 
-  .logo {
-    margin-bottom: 0.5rem;
+  .logo { width: 30px; 
+    height: 30px;
+    margin-bottom: 1rem; 
   }
 
   .headerh2 {
+    font-size: 1.2rem;
     margin: 0;
     padding-top: 0.5rem;
   }
 
   .navList {
-    flex-direction: column;
-    align-items: flex-start;
+    text-align: center;
   }
 
   .navItem {
     margin: 0.5rem 0;
+    font-size: 0.9rem; 
   }
 }
