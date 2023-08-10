@@ -69,7 +69,8 @@
 
 @media (max-width: 768px) {
  
-  .main {
+  .main {  
+
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -77,13 +78,14 @@
   }
 
   .image{
-    max-width: 100%;
+  
+    max-width: 50%;
     margin-right: 0;
   }
 
   .formContainer{
-    max-width: 70%;
-    
+    max-width: 60%;
+
     margin-bottom: 20px;
   }
 
