@@ -84,21 +84,22 @@
 @media (max-width: 768px) {
   .header {
     flex-direction: row; 
-    padding: 0.5rem; /* Reduzindo o padding para economizar espaço */
+    padding: 0.5rem; 
   }
 
   .logo {
-    width: 30px; /* Tornando o logo um pouco menor */
-    height: 30px;
+    width: 20px; /* Tornando o logo um pouco menor */
+    height: 20px;
   }
 
   .headerh2 {
-    font-size: 16px; /* Tornando o texto do cabeçalho um pouco menor */
+    font-size: 12px; /* Tornando o texto do cabeçalho um pouco menor */
     padding-top: 5px;
   }
 
   .navList {
     margin-left: auto; /* Movendo a lista de navegação para a direita */
+    font-size: 12px;
   }
 
   .navItem {

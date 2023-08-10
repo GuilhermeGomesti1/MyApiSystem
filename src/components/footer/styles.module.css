@@ -15,10 +15,10 @@
 
 
 @media (max-width: 768px){
-    .footer{
-        display: none;
+    .footer{  margin-top: 2rem;
+    padding: 1em;
     }
     .h1{
-        display: none;
+font-size: 10px;
     }
 }

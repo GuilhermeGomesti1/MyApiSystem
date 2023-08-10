@@ -70,28 +70,29 @@
 @media (max-width: 768px) {
  
   .main {  
-
+    
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    
   }
 
   .image{
   
-    max-width: 50%;
-    margin-right: 0;
+    max-width: 60%;
+    
   }
 
   .formContainer{
+    
     max-width: 60%;
-
-    margin-bottom: 20px;
+    max-height: 20%;
+  
   }
 
   .textHome{padding-bottom: 2rem;
-    padding-top: 2rem;
-    font-size: 2em;
+    margin-top: -8rem;
+    font-size: 1.2em;
   }
   
 }
