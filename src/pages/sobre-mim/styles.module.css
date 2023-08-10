@@ -183,4 +183,12 @@
   .projectsh2 {
     font-size: 14px;
   }
+
+  .contato {
+    width: 100%;
+    font-size: 10px;
+  }
+  .contato a {
+    font-size: 10px;
+  }
 }
