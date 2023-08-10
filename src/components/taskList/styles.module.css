@@ -116,3 +116,15 @@
   align-items: center;
   margin-top: 10px;
 }
+
+@media (max-width: 768px) {
+  .taskListContainer {
+    width: 90%;
+    padding: 5px;
+  }
+
+  .taskItem {
+    flex-basis: 100%;
+    margin-right: 0;
+  }
+}
