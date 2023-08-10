@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-
   margin: auto 0;
   align-items: center;
   padding-top: 20px;
@@ -74,4 +73,9 @@
     width: 280px;
     margin-bottom: -2.5rem;
   }
+
+
+.descricao {
+  font-size: 18px;
+}
 }
