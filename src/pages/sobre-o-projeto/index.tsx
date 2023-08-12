@@ -6,10 +6,14 @@ import Footer from "@/components/footer/footer";
 const SobreOProjeto: React.FC = () => (
   <>
     <Header />
-   
+
     <div className={styles.container}>
-    <img className={styles.image} src="/imagemHome.png" alt="Logo da aplicação" />
-  
+      <img
+        className={styles.image}
+        src="/imagemHome.png"
+        alt="Logo da aplicação"
+      />
+
       <p className={styles.descricao}>
         Meu projeto é uma aplicação web desenvolvida com Next.js que tem como
         objetivo facilitar o gerenciamento de tarefas de forma fácil e
@@ -42,32 +46,32 @@ const SobreOProjeto: React.FC = () => (
             suas tarefas, com todas as alterações sendo salvas no banco de
             dados.
           </li>
-        </ul>
-      </div>
-
-      <div>
-        <h2 className={styles.subtitulo}>Tecnologias Utilizadas:</h2>
-        <ul className={styles.lista}>
-          <li className={styles["lista-item"]}>
-            Next.js: Framework React para construção de aplicações web.
-          </li>
-          <li className={styles["lista-item"]}>
-            React: Biblioteca JavaScript para criação de interfaces de usuário.
-          </li>
-          <li className={styles["lista-item"]}>
-            CSS Modules: Método de estilização em que as classes CSS são
-            escopadas localmente em componentes React.
-          </li>
-          <li className={styles["lista-item"]}>
-            Node.js: Plataforma JavaScript usada para desenvolvimento do
-            servidor e da API personalizada.
-          </li>
-        </ul>
+        </ul>{" "}
+        <div>
+          <h2 className={styles.subtitulo}>Tecnologias Utilizadas:</h2>
+          <ul className={styles.lista}>
+            <li className={styles["lista-item"]}>
+              Next.js: Framework React para construção de aplicações web.
+            </li>
+            <li className={styles["lista-item"]}>
+              React: Biblioteca JavaScript para criação de interfaces de
+              usuário.
+            </li>
+            <li className={styles["lista-item"]}>
+              CSS Modules: Método de estilização em que as classes CSS são
+              escopadas localmente em componentes React.
+            </li>
+            <li className={styles["lista-item"]}>
+              Node.js: Plataforma JavaScript usada para desenvolvimento do
+              servidor e da API personalizada.
+            </li>
+          </ul>
+        </div>
       </div>
 
       <div>
         <h2 className={styles.subtitulo}>Funcionamento:</h2>
-       
+
         <p className={styles.textFuncionamento}>
           Após autenticar-se, os usuários são redirecionados para a página de
           gerenciamento de tarefas. Lá, eles podem criar novas tarefas, editar
@@ -76,7 +80,6 @@ const SobreOProjeto: React.FC = () => (
           atualizadas e acessíveis em futuros acessos à aplicação.
         </p>
       </div>
-      
     </div>
     <Footer />
   </>

@@ -16,22 +16,21 @@
 
 .tituloPrincipal {
   text-align: center;
-  color: #28b4e9; 
+  color: #28b4e9;
   font-size: 40px;
   font-weight: bold;
   margin-top: 25px;
 }
 
 .descricao {
-  
+  max-width: 1141px;
   color: white;
-  font-size: 20px;
   line-height: 1.6;
   margin-top: 10px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
-  padding: 25px;
+  margin-left: 20px;
+  margin-right: 20px;
+text-align: initial;
+  padding: 10px;
 }
 
 .subtitulo {
@@ -44,7 +43,6 @@
 .lista {
   color: white;
   text-align: initial;
-  
   margin-left: 20px;
   margin-right: 20px;
 }
@@ -54,29 +52,28 @@
 }
 
 .textFuncionamento {
-  text-align: center;
+  text-align: initial;
   color: white;
   line-height: 1.6;
   margin-left: auto;
   margin-right: auto;
   width: 81%;
-  padding: 10px;
+  margin-bottom: 20px;
+  max-width: 1400px;
+
 }
 
-
-@media screen and (max-width: 768px){
-
-  .container{
+@media screen and (max-width: 768px) {
+  .container {
     margin-top: -4rem;
   }
-  .image{
+  .image {
     margin-top: -1rem;
     width: 280px;
     margin-bottom: -2.5rem;
   }
 
-
-.descricao {
-  font-size: 18px;
-}
+  .descricao {
+    font-size: 18px;
+  }
 }
