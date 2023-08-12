@@ -1,38 +1,26 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Sobre o projeto
+Meu projeto é uma aplicação web desenvolvida com Next.js que tem como objetivo facilitar o gerenciamento de tarefas de forma fácil e eficiente. Criei a aplicação com páginas para autenticação de usuários, onde os usuários podem fazer login usando seu email e senha. Além disso, implementei o recurso de cadastro (signup) para novos usuários.
+Funcionalidades do Projeto:
+Login: Permite que os usuários autentiquem-se na aplicação usando email e senha.
+Cadastro (Signup): Implementação de cadastro para novos usuários, que são armazenados na API personalizada criada com Node.js.
+Gerenciamento de Tarefas: Os usuários podem criar, editar e excluir suas tarefas, com todas as alterações sendo salvas no banco de dados.
 
-First, run the development server:
+Após autenticar-se, os usuários são redirecionados para a página de gerenciamento de tarefas. Lá, eles podem criar novas tarefas, editar tarefas existentes e excluir tarefas concluídas. Todas as operações realizadas são enviadas à API, garantindo que as tarefas permaneçam atualizadas e acessíveis em futuros acessos à aplicação.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+Todo o projeto é baseado em uma API personalizada que criei usando Node.js, responsável por armazenar todas as informações no banco de dados. Na página de gerenciamento de tarefas, os usuários podem criar, editar e excluir suas tarefas, e todas as alterações são refletidas no banco de dados, garantindo a persistência e integridade dos dados.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Layout mobile
+![Mobile 1](public/mobileHome.png) ![Mobile 2](public/mobile.png) 
+## Layout web
+![Web 1](public/home.png)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+# Tecnologias utilizadas
+Next.js: Framework React para construção de aplicações web.
+React: Biblioteca JavaScript para criação de interfaces de usuário.
+CSS Modules: Método de estilização em que as classes CSS são escopadas localmente em componentes React.
+Node.js: Plataforma JavaScript usada para desenvolvimento do servidor e da API personalizada.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# Autor
+Guilherme Gomes
+https://www.linkedin.com/in/guilherme-gomes-427321238/
