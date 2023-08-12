@@ -16,13 +16,13 @@ Todo o projeto é baseado em uma API personalizada que criei usando Node.js, res
 ![Web 1](public/home.png)
 
 # Tecnologias utilizadas
-###Next.js:
+### Next.js:
 Framework React para construção de aplicações web.
-###React:
+### React:
 Biblioteca JavaScript para criação de interfaces de usuário.
-###CSS Modules:
+### CSS Modules:
 Método de estilização em que as classes CSS são escopadas localmente em componentes React.
-###Node.js: 
+### Node.js: 
 Plataforma JavaScript usada para desenvolvimento do servidor e da API personalizada.
 
 # Autor
