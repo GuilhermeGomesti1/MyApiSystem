@@ -54,10 +54,8 @@ text-align: initial;
 .textFuncionamento {
   text-align: initial;
   color: white;
-  line-height: 1.6;
-  margin-left: auto;
-  margin-right: auto;
-  width: 81%;
+  margin-left: 20px;
+  margin-right: 20px;
   margin-bottom: 20px;
   max-width: 1400px;
 
