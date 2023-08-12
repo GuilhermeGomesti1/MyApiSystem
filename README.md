@@ -11,7 +11,7 @@ Após autenticar-se, os usuários são redirecionados para a página de gerencia
 Todo o projeto é baseado em uma API personalizada que criei usando Node.js, responsável por armazenar todas as informações no banco de dados. Na página de gerenciamento de tarefas, os usuários podem criar, editar e excluir suas tarefas, e todas as alterações são refletidas no banco de dados, garantindo a persistência e integridade dos dados.
 
 ## Layout mobile
-![Mobile 1](public/mobileHome.png) ![Mobile 2](public/mobile.png) 
+![Mobile 1](public/mobileHome.png)
 ## Layout web
 ![Web 1](public/home.png)
 
