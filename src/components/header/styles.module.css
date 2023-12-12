@@ -9,7 +9,7 @@
 .logo {
   width: 40px;
   height: 40px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .headerh2 {
   color: #64b7cc;
@@ -17,13 +17,11 @@
   margin-right: auto;
   padding-left: 5px;
   padding-top: 7px;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0); 
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0);
 }
 .nav {
   background-color: #ffffff;
-  
 }
-
 
 .navList {
   background-color: #ffffff;
@@ -33,28 +31,26 @@
   display: flex;
   align-items: center;
   text-decoration: none;
-  
 }
 
 .navItem {
   background-color: #ffffff;
   margin: 0 1rem;
- 
+
   transition: color 1s;
 }
-.navItem a { 
+.navItem a {
   background-color: #ffffff;
   text-decoration: none;
   color: #253858;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.034); 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.034);
 }
 
 .navItem a:hover {
   color: #64b7cc;
   transition: color 1s ease;
-
 }
-.homeIcon{
+.homeIcon {
   font-size: 18px;
   align-items: center;
   flex-shrink: 0;
@@ -62,29 +58,26 @@
   background-color: #ffffff;
 }
 
-.sobreMimIcon{
+.sobreMimIcon {
   font-size: 18px;
   align-items: center;
   flex-shrink: 0;
   color: #64b7cc;
   background-color: #ffffff;
-
 }
 
-
-.sobreProjeto{
+.sobreProjeto {
   font-size: 18px;
   align-items: center;
   flex-shrink: 0;
   color: #64b7cc;
   background-color: #ffffff;
-
 }
 
 @media (max-width: 768px) {
   .header {
-    flex-direction: row; 
-    padding: 1rem; 
+    flex-direction: row;
+    padding: 1rem;
     margin-bottom: 4rem;
   }
 
